@@ -77,10 +77,10 @@
 
       <tbody>
         <!-- parent folder ".." -->
-        <FileItem isParent />
+        <FileItem {pane} isParent />
 
         {#each sortedDirListing as file}
-          <FileItem {file} />
+          <FileItem {pane} {file} />
         {/each}
 
         <!-- hack to prevent the last file from being hidden -->

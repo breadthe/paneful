@@ -11,17 +11,21 @@
   // store imports
   //   import { system } from "../store"
   //   const { theme } = system
-  //   import { browser } from "../store"
-  //   const { activePane, homeDir } = browser
+  import { browser } from "../store"
+  const { activePane, homeDir, highlightedFile } = browser
 
-  export let parentDirGenericName: string = ".."
+  export let pane: string
   export let file: FileEntry | undefined = undefined
   export let isParent: boolean = false // designates the parent directory that always appears at the top of the list
 
-  let fileList: [] = []
+  const parentDirGenericName: string = ".."
+
+  $: isHighlighted =
+    pane === $activePane &&
+    ($highlightedFile === file?.name || (!$highlightedFile && isParent))
 </script>
 
-<tr class="">
+<tr class:bg-blue-600={isHighlighted} class:text-white={isHighlighted}>
   <td class="flex items-center gap-2 border-r border-gray-300">
     {#if isParent || file.is_dir}
       <FolderIcon />
