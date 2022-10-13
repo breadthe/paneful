@@ -1,32 +1,34 @@
 <script lang="ts">
   // system/lib/util imports
+  import { invoke } from "@tauri-apps/api/tauri"
 
   // type imports
 
   // store imports
-//   import { system } from "../store"
-//   const { theme } = system
+  //   import { system } from "../store"
+  //   const { theme } = system
   import { browser } from "../store"
-  const { activePane } = browser
+  const { activePane, homeDir } = browser
 
-export let pane: string = "left"
+  export let pane: string = "left"
 </script>
 
 <aside
-    class="h-full w-full"
-    class:active={$activePane === pane}
-    class:ml-1={$activePane === "right"}
-    class:mr-1={$activePane === "left"}
+  class="h-full w-full overflow-y-auto"
+  class:active={$activePane === pane}
+  class:ml-1={$activePane === "right"}
+  class:mr-1={$activePane === "left"}
 >
-    {#if pane === "left"}
-        Left pane
-    {:else}
-        Right pane
-    {/if}
+  {#if pane === "left"}
+    <p>Left pane</p>
+    <p>{$homeDir}</p>
+  {:else}
+    Right pane
+  {/if}
 </aside>
 
 <style>
-    .active {
-        border: 1px solid blue;
-    }
+  .active {
+    border: 1px solid blue;
+  }
 </style>

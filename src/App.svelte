@@ -4,7 +4,8 @@
   import { onMount } from "svelte"
 
   // store imports
-  import { system } from "./store"
+  import { browser, system } from "./store"
+  const { homeDir } = browser
   const { activeSection } = system
 
   // section imports
@@ -20,8 +21,24 @@
     { id: "Settings", component: Settings },
   ]
 
-  onMount(() => {
+  async function setHomeDir() {
+    // Invoke the Stable Diffusion command
+    await invoke("get_home_dir")
+      .then(async (res) => {
+        homeDir.set(JSON.stringify(res));
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        //
+      })
+ }
+
+ onMount(() => {
     invoke("close_splashscreen")
+
+    setHomeDir()
   })
 </script>
 
