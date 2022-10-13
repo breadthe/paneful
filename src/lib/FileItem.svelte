@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { FileEntry } from "../types"
   import Folder from "./icons/Folder.svelte"
 
   // system/lib/util imports
@@ -13,7 +14,8 @@
   //   import { browser } from "../store"
   //   const { activePane, homeDir } = browser
 
-  export let file: string = ".."
+  export let parentDirGenericName: string = ".."
+  export let file: FileEntry | undefined = undefined
   export let type: string = "file" // file or folder
 
   let fileList: [] = []
@@ -24,7 +26,13 @@
     <Folder />
   {/if}
 
-  <span>{file}</span>
+  <span>
+    {#if typeof file === "undefined"}
+      {parentDirGenericName}
+    {:else}
+      {file.name}
+    {/if}
+  </span>
 </div>
 
 <style>

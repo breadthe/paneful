@@ -3,8 +3,11 @@
     windows_subsystem = "windows"
 )]
 
-use std::{env, fs, fs::Metadata, path::Path, process::{Command, Stdio}, time::SystemTime};
+use std::{env, fs::{self, FileType}, fs::Metadata, path::Path, process::{Command, Stdio}, time::SystemTime};
 use tauri::{Manager, Menu, MenuItem, Submenu};
+
+mod structs;
+use structs::FileEntry;
 
 fn main() {
     // here `"quit".to_string()` defines the menu item id, and the second parameter is the menu item label.
@@ -82,14 +85,43 @@ async fn get_home_dir() -> String {
 // returns a list of files in a directory in JSON format
 #[tauri::command]
 async fn get_files_in_dir(dir_path: String) -> String {
-    let mut files: Vec<String> = Vec::new();
+    let mut files: Vec<FileEntry> = Vec::new();
 
-    for entry in fs::read_dir(Path::new(&dir_path)).unwrap() {
+    for entry in fs::read_dir(dir_path).unwrap() {
         let entry = entry.unwrap();
         let path = entry.path();
-        let file_name = path.file_name().unwrap().to_str().unwrap().to_string();
-        files.push(file_name);
+
+        let file_name: String = path.file_name().unwrap_or_default().to_str().unwrap().to_string();
+        let extension: String = path.extension().unwrap_or_default().to_str().unwrap_or_default().to_string();
+        let parent_dir: String = path.parent().unwrap().to_str().unwrap().to_string();
+
+        let metadata: Metadata = fs::metadata(&path).unwrap();
+
+        // get the modified date
+        let modified: SystemTime = metadata.modified().unwrap();
+
+        // get the created date
+        let _created: SystemTime = metadata.created().unwrap();
+
+        let _file_type: FileType = metadata.file_type();
+
+        files.push(
+            FileEntry {
+                name: file_name,
+                extension,
+                path: path.to_str().unwrap().to_string(),
+                parent_dir,
+                is_dir: metadata.is_dir(),
+                is_file: metadata.is_file(),
+                is_symlink: metadata.is_symlink(),
+                size: metadata.len(),
+                modified,
+            }
+        );
     }
+
+    // sort the files by the modified date
+    // files.sort_by(|a, b| a.metadata.1.cmp(&b.1));
 
     serde_json::to_string(&files).unwrap()
 }
