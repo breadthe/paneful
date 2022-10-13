@@ -54,7 +54,7 @@
     {currentDir}
   </div>
 
-  <div class="h-full w-full overflow-y-auto p-1">
+  <div class="h-full w-full overflow-y-auto">
     <table class="w-full">
       <thead>
         <tr class="border-b border-gray-300 text-sm">
@@ -82,6 +82,9 @@
   }
 
   th {
+    background-color: theme("colors.gray.300");
+    position: sticky;
+    top: theme("spacing.0");
     padding: 0 theme("spacing.1");
   }
 </style>
