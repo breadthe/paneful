@@ -21,6 +21,17 @@
 
   let dirListing: Array<FileEntry> = []
 
+  // sort directory listing first by type (folders first) and then by name
+  $: sortedDirListing = dirListing.sort((a, b) => {
+    if (a.is_dir && !b.is_dir) {
+      return -1
+    } else if (!a.is_dir && b.is_dir) {
+      return 1
+    } else {
+      return a.name.localeCompare(b.name)
+    }
+  })
+
   async function getFiles() {
     // Invoke the Stable Diffusion command
     await invoke("get_files_in_dir", { dirPath: currentDir })
@@ -68,9 +79,12 @@
         <!-- parent folder ".." -->
         <FileItem type="folder" />
 
-        {#each dirListing as file}
+        {#each sortedDirListing as file}
           <FileItem type={file.is_dir ? "folder" : "file"} {file} />
         {/each}
+
+        <!-- hack to prevent the last file from being hidden -->
+        <tr><td colspan="3">&nbsp;</td></tr>
       </tbody>
     </table>
   </div>
