@@ -15,17 +15,24 @@ The app is made with:
 
 ## Features
 
-- <label><input type="checkbox" /> Dual-pane, resizeable layout.</label>
+**MVP**
+
+- <label><input type="checkbox" checked /> Dual-pane, resizeable layout.</label>
 - <label><input type="checkbox" /> Show file name, extension, size, modified date, kind (file, folder, etc).</label>
-- <label><input type="checkbox" /> Dark/light mode with persistence.</label>
-- <label><input type="checkbox" /> Start by default in the Home directory.</label>
-- <label><input type="checkbox" /> Remember the last location in each pane when quitting the app.</label>
+- <label><input type="checkbox" checked /> Start by default in the Home directory.</label>
+- <label><input type="checkbox" /> Remember the directory location in each pane when quitting the app.</label>
 - <label><input type="checkbox" /> Switch between panes with TAB.</label>
 - <label><input type="checkbox" /> Show directories first.</label>
 - <label><input type="checkbox" /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
 - <label><input type="checkbox" /> Select a file/folder with SPACE.</label>
 - <label><input type="checkbox" /> Open a file in its associated app with ENTER.</label>
 - <label><input type="checkbox" /> Top entry navigates to parent folder.</label>
+- <label><input type="checkbox" /> Quick filter by file name.</label>
+
+**Beyond MVP**
+
+- <label><input type="checkbox" /> Dark/light mode with persistence.</label>
+- <label><input type="checkbox" /> Navigate to top/bottom of list with ???.</label>
 - <label><input type="checkbox" /> Simple controls for:</label>
     - <label><input type="checkbox" /> F3 - view file (opens in associated app), also works with ENTER.</label>
     - <label><input type="checkbox" /> F4 - edit file (opens in text editor).</label>
@@ -34,7 +41,6 @@ The app is made with:
     - <label><input type="checkbox" /> F7 - create new folder in the active pane.</label>
     - <label><input type="checkbox" /> F8 - delete a file/folder or selection.</label>
 - <label><input type="checkbox" /> Sort files by clicking the column header.</label>
-- <label><input type="checkbox" /> Quick filter by file name.</label>
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the Home directory.</label>
 
 **Nice to have**
@@ -49,6 +55,8 @@ The app is made with:
 - <label><input type="checkbox" /> Right click a file/folder for a context menu:</label>
     - <label><input type="checkbox" /> Info, etc.</label>
 - <label><input type="checkbox" /> Remember sorting, filtering, etc for each pane when quitting.</label>
+- <label><input type="checkbox" /> Remember pane split.</label>
+- <label><input type="checkbox" /> Remember app window size & position.</label>
 
 ## Download
 
