@@ -23,9 +23,18 @@
   $: isHighlighted =
     pane === $activePane &&
     ($highlightedFile === file?.name || (!$highlightedFile && isParent))
+
+  function setHighlightedFile() {
+    activePane.set(pane)
+    highlightedFile.set(isParent ? null : file?.name)
+  }
 </script>
 
-<tr class:bg-blue-600={isHighlighted} class:text-white={isHighlighted}>
+<tr
+  class:bg-blue-600={isHighlighted}
+  class:text-white={isHighlighted}
+  on:click={() => setHighlightedFile()}
+>
   <td class="flex items-center gap-2 border-r border-gray-300">
     {#if isParent || file.is_dir}
       <FolderIcon />
@@ -61,6 +70,7 @@
 
 <style>
   td {
+    cursor: theme("cursor.default");
     font-size: theme("fontSize.sm");
     padding: 0 theme("spacing.1");
   }

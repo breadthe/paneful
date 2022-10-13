@@ -55,12 +55,7 @@
   })
 </script>
 
-<aside
-  class="h-full w-full"
-  class:active={$activePane === pane}
-  class:ml-1={$activePane === "right"}
-  class:mr-1={$activePane === "left"}
->
+<aside class="h-full w-full" class:active={$activePane === pane}>
   <div class="p-1 bg-gray-600 text-white text-sm">
     {currentDir}
   </div>
@@ -91,8 +86,11 @@
 </aside>
 
 <style>
-  .active {
-    border: 2px solid theme("colors.blue.500");
+  aside {
+    border: theme("borderWidth.2") solid theme("colors.gray.300");
+  }
+  aside.active {
+    border: theme("borderWidth.2") solid theme("colors.blue.600");
   }
 
   th {
