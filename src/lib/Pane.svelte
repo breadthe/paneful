@@ -1,7 +1,7 @@
 <script lang="ts">
   // system/lib/util imports
   import { invoke } from "@tauri-apps/api/tauri"
-  import {onMount} from "svelte"
+  import { onMount } from "svelte"
 
   // type imports
 
@@ -10,6 +10,9 @@
   //   const { theme } = system
   import { browser } from "../store"
   const { activePane, homeDir } = browser
+
+  // component imports
+  import FileEntry from "./FileEntry.svelte"
 
   export let pane: string = "left"
 
@@ -41,16 +44,20 @@
 </script>
 
 <aside
-  class="h-full w-full overflow-y-auto"
+  class="h-full w-full"
   class:active={$activePane === pane}
   class:ml-1={$activePane === "right"}
   class:mr-1={$activePane === "left"}
 >
-  <div class="py-1 px-2 border-b border-black bg-gray-600 text-white text-sm">{currentDir}</div>
+  <div class="p-1 bg-gray-600 text-white text-sm">
+    {currentDir}
+  </div>
 
-  <div class="p-1">
+  <div class="h-full w-full overflow-y-auto p-1">
+    <FileEntry type="folder" />
+
     {#each fileList as file}
-        <p>{file}</p>
+      <FileEntry {file} />
     {/each}
   </div>
 </aside>
