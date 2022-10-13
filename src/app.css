@@ -31,15 +31,42 @@ html body {
     background-color: theme("colors.white");
 }
 
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
-
 #app {
     max-width: 1280px;
     margin: 0 auto;
 }
+
+/* Headings */
+h1 {
+    font-weight: theme("fontWeight.bold");
+    font-size: theme("fontSize.2xl");
+}
+
+h2 {
+    font-weight: theme("fontWeight.medium");
+    font-size: theme("fontSize.xl");
+}
+
+h3 {
+    font-weight: theme("fontWeight.bold");
+    font-size: theme("fontSize.lg");
+}
+
+h4 {
+    font-weight: theme("fontWeight.normal");
+    font-size: theme("fontSize.base");
+}
+
+h5 {
+    font-weight: theme("fontWeight.normal");
+    font-size: theme("fontSize.sm");
+}
+
+h6 {
+    font-weight: theme("fontWeight.light");
+    font-size: theme("fontSize.xs");
+}
+
 
 /* Buttons */
 

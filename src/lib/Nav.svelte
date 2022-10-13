@@ -1,37 +1,27 @@
 <script lang="ts">
+  // system/lib/util imports
+  import Modal from "svelte-simple-modal"
+
   // store imports
   import { system } from "../store"
   const { activeSection } = system
 
-  const menu = [
-    {
-      name: "Browser",
-      icon: "list",
-      section: "Browser",
-    },
-    {
-      name: "Settings",
-      icon: "list",
-      section: "Settings",
-    },
-  ]
+  // component imports
+  import SettingsButton from "./SettingsButton.svelte"
 </script>
 
-<nav class="sticky top-0 z-10 pb-2 w-full bg-white dark:bg-neutral-800">
-  <ol class="flex gap-4">
-    {#each menu as item (item.name)}
-      <li
-        class="border-blue-600 cursor-pointer hover:text-blue-600"
-        class:border-b-4={item.name === $activeSection}
-        class:text-blue-600={item.name === $activeSection}
-        class:font-bold={item.name === $activeSection}
-        class:rounded={item.name !== $activeSection}
-        on:click={() => (activeSection.set(item.section))}
-      >
-        <span class="px-2">{item.name}</span>
-      </li>
-    {/each}
-  </ol>
+<nav class="sticky top-0 z-10 pt-2 w-full bg-white dark:bg-neutral-800">
+  <div class="flex justify-between">
+    <!-- app logo -->
+    <div class="flex items-center gap-2">
+        <img src="/public/128x128.png" alt="Paneful logo" class="w-8 h-8" />
+        <span class="font-bold font-mono">Paneful</span>
+    </div>
+
+    <Modal>
+      <SettingsButton />
+    </Modal>
+  </div>
 </nav>
 
 <style>

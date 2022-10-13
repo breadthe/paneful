@@ -1328,6 +1328,11 @@
     "sorcery" "^0.10.0"
     "strip-indent" "^3.0.0"
 
+"svelte-simple-modal@^1.4.1":
+  "integrity" "sha512-em/uxH1xvQZoXTOq81Kk0u9ltjf/EyQkNiKTQJQmdCygDMqyUfMCFzLnbIQ4ApfV4BcRh6eYbwbCeeWTOyfpsg=="
+  "resolved" "https://registry.npmjs.org/svelte-simple-modal/-/svelte-simple-modal-1.4.1.tgz"
+  "version" "1.4.1"
+
 "svelte-splitpanes@^0.7.3":
   "integrity" "sha512-IsByD11xPI/KnI6T8xMWL+YHr+dATt4tVVoFJR676o0w7Lw3lUFq6l4zdibg3Apli7duFfCicGhT6/7NPblnyQ=="
   "resolved" "https://registry.npmjs.org/svelte-splitpanes/-/svelte-splitpanes-0.7.3.tgz"
@@ -1336,7 +1341,7 @@
     "@playwright/test" "1.24.2"
     "serve" "14.0.1"
 
-"svelte@^3.23.0", "svelte@^3.24.0", "svelte@^3.44.0", "svelte@^3.49.0", "svelte@>=3.19.0":
+"svelte@^3.23.0", "svelte@^3.24.0", "svelte@^3.31.2", "svelte@^3.44.0", "svelte@^3.49.0", "svelte@>=3.19.0":
   "integrity" "sha512-PBITYIrsNOuW+Dtds00gSY68raNZQn7i59Dg/fjgf6WwyawPKeBwle692coO7ILZqSO+UJe9899aDn9sMdeOHA=="
   "resolved" "https://registry.npmjs.org/svelte/-/svelte-3.51.0.tgz"
   "version" "3.51.0"
