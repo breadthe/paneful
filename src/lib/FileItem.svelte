@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { FileEntry } from "../types"
   import FolderIcon from "./icons/FolderIcon.svelte"
 
   // system/lib/util imports
@@ -7,6 +6,7 @@
   //   import { onMount } from "svelte"
 
   // type imports
+  import type { FileEntry, HighlightedFile, Panes } from "../types"
 
   // store imports
   //   import { system } from "../store"
@@ -14,7 +14,7 @@
   import { browser } from "../store"
   const { activePane, homeDir, highlightedFile } = browser
 
-  export let pane: string
+  export let pane: Panes
   export let file: FileEntry | undefined = undefined
   export let isParent: boolean = false // designates the parent directory that always appears at the top of the list
 
@@ -22,11 +22,19 @@
 
   $: isHighlighted =
     pane === $activePane &&
-    ($highlightedFile === file?.name || (!$highlightedFile && isParent))
+    ($highlightedFile?.[pane]?.name === file?.name ||
+      (!$highlightedFile && isParent))
 
   function setHighlightedFile() {
     activePane.set(pane)
-    highlightedFile.set(isParent ? null : file?.name)
+
+    const hlFile: HighlightedFile = {
+      pane,
+      name: file?.name || parentDirGenericName,
+      path: file?.path || "",
+    }
+
+    highlightedFile.set(isParent ? null : hlFile)
   }
 </script>
 

@@ -1,3 +1,4 @@
+import type { HighlightedFile, PaneHighlightedFile } from "../types"
 import { writable } from "svelte/store"
 
 // Set the home directory
@@ -17,9 +18,26 @@ activePane.subscribe((value: string) => {
 })
 
 // The currently highlighted file
-const defaultHighlightedFile: string | null = null // null means the parent directory ".." is highlighted by default
-const storedHighlightedFile: string | null = JSON.parse(localStorage.getItem("highlightedFile")) || defaultHighlightedFile
-export const highlightedFile = writable(storedHighlightedFile ? storedHighlightedFile : defaultHighlightedFile)
-highlightedFile.subscribe((value: string) => {
-    localStorage.setItem("highlightedFile", JSON.stringify(value))
-})
+function createHighlightedFileStore() {
+    const defaultHighlightedFile: HighlightedFile | null = null // null means the parent directory ".." is highlighted by default
+    let storedHighlightedFile: PaneHighlightedFile = JSON.parse(localStorage.getItem("highlightedFile")) || defaultHighlightedFile
+    const { subscribe, set } = writable(storedHighlightedFile ? storedHighlightedFile : defaultHighlightedFile)
+
+    return {
+        subscribe,
+        set: (hlFile: HighlightedFile) => {
+            let newHighlightedFile = storedHighlightedFile
+
+            if (newHighlightedFile && newHighlightedFile[hlFile.pane]) {
+                newHighlightedFile[hlFile.pane] = { name: hlFile.name, path: hlFile.path }
+            } else {
+                newHighlightedFile[hlFile.pane === "left" ? "left" : "right"] = { name: hlFile.name, path: hlFile.path }
+            }
+
+            storedHighlightedFile = newHighlightedFile
+            localStorage.setItem("highlightedFile", JSON.stringify(storedHighlightedFile))
+            set(storedHighlightedFile)
+        }
+    };
+}
+export const highlightedFile = createHighlightedFileStore()

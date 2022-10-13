@@ -29,3 +29,27 @@ export interface FileEntry {
 export interface DirectoryListing {
     Array: FileEntry[]
 }
+
+export enum Panes {
+    Left = "left",
+    Right = "right",
+}
+
+// the currently highlighted file in the active pane
+export interface HighlightedFile {
+    pane: Panes;
+    name: string | null;
+    path: string | null;
+}
+
+// tracks the highlighted file for each pane
+export interface PaneHighlightedFile {
+    left: {
+        name: string | null;
+        path: string | null;
+    },
+    right: {
+        name: string | null;
+        path: string | null;
+    },
+}
