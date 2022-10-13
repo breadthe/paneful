@@ -53,7 +53,8 @@ fn main() {
         // This is where you pass in your commands
         .invoke_handler(tauri::generate_handler![
             close_splashscreen,
-            get_home_dir
+            get_home_dir,
+            get_files_in_dir
         ])
         .menu(menu)
         .run(tauri::generate_context!())
@@ -80,10 +81,10 @@ async fn get_home_dir() -> String {
 
 // returns a list of files in a directory in JSON format
 #[tauri::command]
-async fn get_files_in_dir(dir_path: &String) -> String {
+async fn get_files_in_dir(dir_path: String) -> String {
     let mut files: Vec<String> = Vec::new();
 
-    for entry in fs::read_dir(dir_path).unwrap() {
+    for entry in fs::read_dir(Path::new(&dir_path)).unwrap() {
         let entry = entry.unwrap();
         let path = entry.path();
         let file_name = path.file_name().unwrap().to_str().unwrap().to_string();

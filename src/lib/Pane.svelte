@@ -1,6 +1,7 @@
 <script lang="ts">
   // system/lib/util imports
   import { invoke } from "@tauri-apps/api/tauri"
+  import {onMount} from "svelte"
 
   // type imports
 
@@ -11,6 +12,32 @@
   const { activePane, homeDir } = browser
 
   export let pane: string = "left"
+
+  $: currentDir = JSON.parse($homeDir)
+
+  let fileList: [] = []
+
+  async function getFiles() {
+    // Invoke the Stable Diffusion command
+    await invoke("get_files_in_dir", { dirPath: currentDir })
+      .then((res: string) => {
+        fileList = JSON.parse(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        //
+      })
+  }
+
+  function populateFiles(node: any) {
+    getFiles()
+  }
+
+  onMount(() => {
+    getFiles()
+  })
 </script>
 
 <aside
@@ -19,16 +46,17 @@
   class:ml-1={$activePane === "right"}
   class:mr-1={$activePane === "left"}
 >
-  {#if pane === "left"}
-    <p>Left pane</p>
-    <p>{$homeDir}</p>
-  {:else}
-    Right pane
-  {/if}
+  <div class="py-1 px-2 border-b border-black bg-gray-600 text-white text-sm">{currentDir}</div>
+
+  <div class="p-1">
+    {#each fileList as file}
+        <p>{file}</p>
+    {/each}
+  </div>
 </aside>
 
 <style>
   .active {
-    border: 1px solid blue;
+    border: 2px solid theme("colors.blue.500");
   }
 </style>

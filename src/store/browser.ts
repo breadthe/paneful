@@ -10,8 +10,8 @@ activePane.subscribe((value: string) => {
 
 // The currently active pane, defaults to the "left" pane
 const defaultHomeDir: string = "/"
-const storedHomeDir: string = JSON.parse(localStorage.getItem("homeDir")) || defaultHomeDir
+const storedHomeDir: string = localStorage.getItem("homeDir") || defaultHomeDir
 export const homeDir = writable(storedHomeDir ? storedHomeDir : defaultHomeDir)
 homeDir.subscribe((value: string) => {
-    JSON.stringify(localStorage.setItem("homeDir", value));
+    localStorage.setItem("homeDir", value);
 })
