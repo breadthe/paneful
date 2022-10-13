@@ -5,7 +5,7 @@
 
   // store imports
   import { browser, system } from "./store"
-  const { homeDir } = browser
+  const { homeDir, activePane } = browser
   const { activeSection } = system
 
   // section imports
@@ -25,24 +25,42 @@
     // Invoke the Stable Diffusion command
     await invoke("get_home_dir")
       .then(async (res) => {
-        homeDir.set(JSON.stringify(res));
+        homeDir.set(JSON.stringify(res))
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err)
       })
       .finally(() => {
         //
       })
- }
+  }
 
- onMount(() => {
+  const keydownHandler = (event: KeyboardEvent) => {
+    console.log(event)
+    if (event.key === "Tab") {
+      event.preventDefault()
+      $activePane === "left" ? activePane.set("right") : activePane.set("left")
+    }
+  }
+
+  function handleGlobalKeys(_node: HTMLElement) {
+    document.addEventListener("keydown", keydownHandler)
+
+    return {
+      destroy() {
+        document.removeEventListener("keydown", keydownHandler)
+      },
+    }
+  }
+
+  onMount(() => {
     invoke("close_splashscreen")
 
     setHomeDir()
   })
 </script>
 
-<main class="flex flex-col gap-2">
+<main class="flex flex-col gap-2" use:handleGlobalKeys>
   <Nav />
 
   <!-- Dynamic section based on activeSection -->
