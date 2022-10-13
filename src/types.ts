@@ -22,6 +22,7 @@ export interface FileEntry {
     is_file: boolean;
     is_symlink: boolean;
     size: number;
+    size_pretty: string;
     modified: SystemTime;
 }
 

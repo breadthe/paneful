@@ -37,11 +37,13 @@
   </td>
   <td class="text-right flex-grow border-r border-gray-300">
     {#if typeof file !== "undefined"}
-      {#if type === "file"}
-        {file.size} bytes
-      {:else}
-        DIR
-      {/if}
+      <span title={file.size.toString()}>
+        {#if type === "file"}
+          {file.size_pretty}
+        {:else}
+          DIR
+        {/if}
+      </span>
     {/if}
   </td>
   <td class="">

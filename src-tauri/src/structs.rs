@@ -11,6 +11,7 @@ pub struct FileEntry {
     pub is_file: bool,
     pub is_symlink: bool,
     pub size: u64,
+    pub size_pretty: String,
     pub modified: SystemTime,
 }
 
@@ -28,6 +29,7 @@ impl Serialize for FileEntry {
         file_entry.serialize_field("is_file", &self.is_file)?;
         file_entry.serialize_field("is_symlink", &self.is_symlink)?;
         file_entry.serialize_field("size", &self.size)?;
+        file_entry.serialize_field("size_pretty", &self.size_pretty)?;
         file_entry.serialize_field("modified", &self.modified)?;
         file_entry.end()
     }

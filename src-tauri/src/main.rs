@@ -6,6 +6,8 @@
 use std::{env, fs::{self, FileType}, fs::Metadata, path::Path, process::{Command, Stdio}, time::SystemTime};
 use tauri::{Manager, Menu, MenuItem, Submenu};
 
+use human_bytes::human_bytes;
+
 mod structs;
 use structs::FileEntry;
 
@@ -97,6 +99,8 @@ async fn get_files_in_dir(dir_path: String) -> String {
 
         let metadata: Metadata = fs::metadata(&path).unwrap();
 
+        let size = metadata.len();
+
         // get the modified date
         let modified: SystemTime = metadata.modified().unwrap();
 
@@ -114,7 +118,8 @@ async fn get_files_in_dir(dir_path: String) -> String {
                 is_dir: metadata.is_dir(),
                 is_file: metadata.is_file(),
                 is_symlink: metadata.is_symlink(),
-                size: metadata.len(),
+                size,
+                size_pretty: human_bytes(size as f64),
                 modified,
             }
         );
