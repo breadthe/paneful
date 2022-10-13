@@ -16,27 +16,46 @@
 
   export let parentDirGenericName: string = ".."
   export let file: FileEntry | undefined = undefined
-  export let type: string = "file" // file or folder
+  export let type: string = "file" // "file" or "folder"
 
   let fileList: [] = []
 </script>
 
-<div class="flex items-center gap-2">
-  {#if type === "folder"}
-    <Folder />
-  {/if}
-
-  <span>
-    {#if typeof file === "undefined"}
-      {parentDirGenericName}
-    {:else}
-      {file.name}
+<tr class="">
+  <td class="flex items-center gap-2 border-r border-gray-300">
+    {#if type === "folder"}
+      <Folder />
     {/if}
-  </span>
-</div>
+
+    <span>
+      {#if typeof file === "undefined"}
+        {parentDirGenericName}
+      {:else}
+        {file.name}
+      {/if}
+    </span>
+  </td>
+  <td class="text-right flex-grow border-r border-gray-300">
+    {#if typeof file !== "undefined"}
+      {#if type === "file"}
+        {file.size} bytes
+      {:else}
+        DIR
+      {/if}
+    {/if}
+  </td>
+  <td class="">
+    <div class="w-full overflow-hidden">
+      {#if typeof file !== "undefined"}
+        {new Date(file.modified.secs_since_epoch * 1000).toLocaleString()}
+      {/if}
+    </div>
+  </td></tr
+>
 
 <style>
-  .active {
-    border: 2px solid theme("colors.blue.500");
+  td {
+    font-size: theme("fontSize.sm");
+    padding: 0 theme("spacing.1");
   }
 </style>

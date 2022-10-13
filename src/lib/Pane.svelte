@@ -55,16 +55,33 @@
   </div>
 
   <div class="h-full w-full overflow-y-auto p-1">
-    <FileItem type="folder" />
+    <table class="w-full">
+      <thead>
+        <tr class="border-b border-gray-300 text-sm">
+          <th class="text-left border-r border-gray-300">name</th>
+          <th class="text-right border-r border-gray-300">size</th>
+          <th class="text-left">modified</th>
+        </tr>
+      </thead>
 
-    {#each dirListing as file}
-      <FileItem {file} />
-    {/each}
+      <tbody>
+        <!-- parent folder ".." -->
+        <FileItem type="folder" />
+
+        {#each dirListing as file}
+          <FileItem type={file.is_dir ? "folder" : "file"} {file} />
+        {/each}
+      </tbody>
+    </table>
   </div>
 </aside>
 
 <style>
   .active {
     border: 2px solid theme("colors.blue.500");
+  }
+
+  th {
+    padding: 0 theme("spacing.1");
   }
 </style>
