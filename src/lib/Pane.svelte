@@ -2,6 +2,7 @@
   // system/lib/util imports
   import { invoke } from "@tauri-apps/api/tauri"
   import type { FileEntry } from "../types"
+  import { Panes } from "../types"
   import { onMount } from "svelte"
 
   // type imports
@@ -15,8 +16,9 @@
   // component imports
   import FileItem from "./FileItem.svelte"
 
-  export let pane: string = "left"
+  export let pane: Panes = Panes.Left
 
+  // @todo this needs to check which pane is active from the $highlightedFile store and get the files from the path
   $: currentDir = JSON.parse($homeDir)
 
   let dirListing: Array<FileEntry> = []
@@ -44,10 +46,6 @@
       .finally(() => {
         //
       })
-  }
-
-  function populateFiles(node: any) {
-    getFiles()
   }
 
   onMount(() => {

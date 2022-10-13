@@ -1,20 +1,22 @@
 <script lang="ts">
-  import CommandBar from "./lib/CommandBar.svelte"
-
   // system/lib/util imports
   import { Pane as SplitPane, Splitpanes } from "svelte-splitpanes"
+
+  // type imports
+  import { Panes } from "./types"
 
   // store imports
   //   import { system } from "./store"
   //   const { activeSection } = system
 
   // component imports
+  import CommandBar from "./lib/CommandBar.svelte"
   import Pane from "./lib/Pane.svelte"
 </script>
 
 <Splitpanes class="default-theme" style="">
-  <SplitPane minSize={40}><Pane pane="left" /></SplitPane>
-  <SplitPane minSize={40}><Pane pane="right" /></SplitPane>
+  <SplitPane minSize={40}><Pane pane={Panes.Left} /></SplitPane>
+  <SplitPane minSize={40}><Pane pane={Panes.Right} /></SplitPane>
 </Splitpanes>
 
 <CommandBar />
