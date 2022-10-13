@@ -7,14 +7,9 @@
   import Popup from "./Popup.svelte"
 
   const { open } = getContext("simple-modal")
-
-  function openSettings() {
-    console.log("open settings")
-    open(Popup)
-  }
 </script>
 
-<button on:click={openSettings} title="Settings"><CogIcon /></button>
+<button on:click={() => open(Popup)} title="Settings"><CogIcon /></button>
 
 <style>
 </style>
