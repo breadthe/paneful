@@ -7,11 +7,12 @@
   //   const { activeSection } = system
 
   // component imports
+  import Pane from "./lib/Pane.svelte"
 </script>
 
 <Splitpanes class="default-theme" style="">
-  <SplitPane minSize={40}>Left Pane</SplitPane>
-  <SplitPane minSize={40}>Right Pane</SplitPane>
+  <SplitPane minSize={40}><Pane pane="left" /></SplitPane>
+  <SplitPane minSize={40}><Pane pane="right" /></SplitPane>
 </Splitpanes>
 
 <style>
