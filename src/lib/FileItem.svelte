@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { FileEntry } from "../types"
-  import Folder from "./icons/Folder.svelte"
+  import FolderIcon from "./icons/FolderIcon.svelte"
 
   // system/lib/util imports
   //   import { invoke } from "@tauri-apps/api/tauri"
@@ -16,19 +16,19 @@
 
   export let parentDirGenericName: string = ".."
   export let file: FileEntry | undefined = undefined
-  export let type: string = "file" // "file" or "folder"
+  export let isParent: boolean = false // designates the parent directory that always appears at the top of the list
 
   let fileList: [] = []
 </script>
 
 <tr class="">
   <td class="flex items-center gap-2 border-r border-gray-300">
-    {#if type === "folder"}
-      <Folder />
+    {#if isParent || file.is_dir}
+      <FolderIcon />
     {/if}
 
     <span>
-      {#if typeof file === "undefined"}
+      {#if isParent}
         {parentDirGenericName}
       {:else}
         {file.name}
@@ -38,9 +38,9 @@
   <td class="text-right flex-grow border-r border-gray-300">
     {#if typeof file !== "undefined"}
       <span title={file.size.toString()}>
-        {#if type === "file"}
+        {#if file.is_file}
           {file.size_pretty}
-        {:else}
+        {:else if file.is_dir}
           DIR
         {/if}
       </span>

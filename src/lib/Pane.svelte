@@ -77,10 +77,10 @@
 
       <tbody>
         <!-- parent folder ".." -->
-        <FileItem type="folder" />
+        <FileItem isParent />
 
         {#each sortedDirListing as file}
-          <FileItem type={file.is_dir ? "folder" : "file"} {file} />
+          <FileItem {file} />
         {/each}
 
         <!-- hack to prevent the last file from being hidden -->
