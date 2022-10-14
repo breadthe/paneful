@@ -60,7 +60,7 @@
   })
 </script>
 
-<main class="flex flex-col gap-2" use:handleGlobalKeys>
+<main class="flex flex-col" use:handleGlobalKeys>
   <Nav />
 
   <!-- Dynamic section based on activeSection -->
