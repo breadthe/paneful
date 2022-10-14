@@ -42,6 +42,7 @@
       })
   }
 
+  // @deprecated
   function setPaneDirs() {
     if ($highlightedFile[Panes.Left]?.parent_dir) {
       leftCurrentDir.set($highlightedFile[Panes.Left]?.parent_dir)
@@ -52,9 +53,26 @@
   }
 
   const keydownHandler = (event: KeyboardEvent) => {
-    if (event.key === "Tab") {
-      event.preventDefault()
-      $activePane === "left" ? activePane.set("right") : activePane.set("left")
+    switch (event.key) {
+      case "Tab":
+        event.preventDefault()
+        $activePane === Panes.Left
+          ? activePane.set(Panes.Right)
+          : activePane.set(Panes.Left)
+        break
+
+      case "ArrowUp":
+        event.preventDefault()
+        console.log("ArrowUp")
+        break
+
+      case "ArrowDown":
+        event.preventDefault()
+        console.log("ArrowDown")
+        break
+
+      default:
+        break
     }
   }
 

@@ -58,6 +58,8 @@ The app is made with:
 - <label><input type="checkbox" /> Remember pane split.</label>
 - <label><input type="checkbox" /> Remember app window size & position.</label>
 - <label><input type="checkbox" /> Summary of file counts & sizes below each pane.</label>
+- <label><input type="checkbox" /> Follow a symlink.</label>
+- <label><input type="checkbox" /> When navigating up a folder (back), , set the highlighted file to the directory that was navigated from instead of defaulting to "..".</label>
 
 ## Download
 

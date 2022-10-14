@@ -36,6 +36,8 @@
           ($highlightedFile?.[pane]?.name === parentDirGenericName &&
             isParent))))
 
+  $: thisCurrentDir = eval(`${$activePane}CurrentDir`) // leftCurrentDir or rightCurrentDir
+
   function setHighlightedFile() {
     activePane.set(pane)
 
@@ -50,36 +52,53 @@
   }
 
   function handleDoubleClick() {
-    if (file?.is_dir) {
-      // navigate one directory up
-      if (pane === Panes.Left && file?.parent_dir) {
-        if (isParent) {
-          leftCurrentDir.set(file?.parent_dir)
-        } else {
-          leftCurrentDir.set(file?.path)
-        }
-      }
+    navigateToDir()
+  }
 
-      // navigate one directory up
-      if (pane === Panes.Right && file?.parent_dir) {
-        if (isParent) {
-          rightCurrentDir.set(file?.parent_dir)
-        } else {
-          rightCurrentDir.set(file?.path)
-        }
-      }
+  // get the highlighted file in the current pane and if is a directory, set the current dir for the current pane to that directory
+  function navigateToDir() {
+    // get the highlighted file in the current pane and if is a directory, set the current dir for the current pane to that directory
+    if (isParent) {
+      thisCurrentDir.set(file?.parent_dir)
+    } else if (file.is_dir) {
+      thisCurrentDir.set(file?.path)
+    }
 
-      // set the highlighted file in the new directory to the parent directory ".."
-      const hlFile: HighlightedFile = {
-        pane,
-        name: parentDirGenericName,
-        path: isParent ? file?.parent_dir : file?.path,
-        parent_dir: isParent
-          ? file?.parent_dir.split("/").slice(0, -1).join("/") || // /Users/<my-user> -> /Users
-            JSON.parse($homeDir)
-          : file?.parent_dir,
-      }
-      highlightedFile.set(hlFile)
+    // set the highlighted file in the new directory to the parent directory ".."
+    // @todo if navigating up (back) to a directory, set the highlighted file to the directory that was navigated from
+    const hlFile: HighlightedFile = {
+      pane,
+      name: parentDirGenericName,
+      path: isParent ? file?.parent_dir : file?.path,
+      parent_dir: isParent
+        ? file?.parent_dir.split("/").slice(0, -1).join("/") || // /Users/<my-user> -> /Users
+          JSON.parse($homeDir)
+        : file?.parent_dir,
+    }
+    highlightedFile.set(hlFile)
+  }
+
+  const keydownHandler = (event: KeyboardEvent) => {
+    if (!isHighlighted) return
+
+    switch (event.key) {
+      case "Enter":
+        event.preventDefault()
+        navigateToDir()
+        break
+
+      default:
+        break
+    }
+  }
+
+  function handleGlobalKeys(_node: HTMLElement) {
+    document.addEventListener("keydown", keydownHandler)
+
+    return {
+      destroy() {
+        document.removeEventListener("keydown", keydownHandler)
+      },
     }
   }
 </script>
@@ -89,6 +108,7 @@
   class:text-white={isHighlighted}
   on:click={() => setHighlightedFile()}
   on:dblclick={() => handleDoubleClick()}
+  use:handleGlobalKeys
 >
   <td class="flex items-center gap-2 border-r border-gray-300">
     {#if isParent || file.is_dir}
