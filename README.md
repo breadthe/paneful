@@ -90,4 +90,4 @@ cargo tauri build
 
 ## License
 
-[MIT](MIT)
+[MIT](https://github.com/breadthe/Paneful/blob/main/LICENSE)
