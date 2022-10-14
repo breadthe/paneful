@@ -17,12 +17,16 @@
     highlightedFile,
     leftCurrentDir,
     rightCurrentDir,
+    leftSort,
+    rightSort,
   } = browser
 
   // component imports
   import FileItem from "./FileItem.svelte"
   import CurrentDir from "./CurrentDir.svelte"
   import SelectedFiles from "./SelectedFiles.svelte"
+  import DownSmallIcon from "./icons/DownSmallIcon.svelte"
+  import UpSmallIcon from "./icons/UpSmallIcon.svelte"
 
   export let pane: Panes = Panes.Left
 
@@ -39,6 +43,8 @@
 
     getFiles()
   }
+
+  $: thisPaneSort = eval(`${pane}Sort`)
 
   let dirListing: Array<FileEntry> = []
 
@@ -60,7 +66,8 @@
     } else if (!a.is_dir && b.is_dir) {
       return 1
     } else {
-      return a.name.localeCompare(b.name)
+      if ($thisPaneSort === "nameAsc") return a.name.localeCompare(b.name)
+      if ($thisPaneSort === "nameDesc") return b.name.localeCompare(a.name)
     }
   })
 
@@ -82,6 +89,25 @@
       .finally(() => {
         //
       })
+  }
+
+  function sortFilesBy(field: string) {
+    switch (field) {
+      case "name":
+        if ($thisPaneSort === "nameAsc") {
+          thisPaneSort.set("nameDesc")
+          break
+        }
+
+        if ($thisPaneSort === "nameDesc") {
+          thisPaneSort.set("nameAsc")
+          break
+        }
+        break
+
+      default:
+        break
+    }
   }
 
   const keydownHandler = (event: KeyboardEvent) => {
@@ -160,12 +186,32 @@
 >
   <CurrentDir {pane} {currentDir} />
 
-  <div class="h-full w-full overflow-y-auto" style="height: calc(100vh - 160px);">
+  <div
+    class="h-full w-full overflow-y-auto"
+    style="height: calc(100vh - 160px);"
+  >
     <table class="w-full">
       <thead>
         <tr class="border-b border-gray-300 dark:border-gray-700 text-sm">
-          <th class="text-left border-r border-gray-300 dark:border-gray-700">name</th>
-          <th class="text-right border-r border-gray-300 dark:border-gray-700">size</th>
+          <th
+            class="flex items-center justify-between text-left border-r border-gray-300 dark:border-gray-700 cursor-pointer"
+            on:click={() => sortFilesBy("name")}
+          >
+            <span>name</span>
+
+            {#if $thisPaneSort === "nameAsc"}
+              <!-- <button on:click={() => sortFilesBy("name")} class="cursor-pointer"><DownSmallIcon /></button> -->
+              <DownSmallIcon />
+            {/if}
+
+            {#if $thisPaneSort === "nameDesc"}
+              <!-- <button on:click={() => sortFilesBy("name")} class="cursor-pointer"><UpSmallIcon /></button> -->
+              <UpSmallIcon />
+            {/if}
+          </th>
+          <th class="text-right border-r border-gray-300 dark:border-gray-700">
+            size
+          </th>
           <th class="text-left">modified</th>
         </tr>
       </thead>

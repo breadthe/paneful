@@ -16,6 +16,19 @@ rightCurrentDir.subscribe((value: string) => {
     localStorage.setItem("rightCurrentDir", JSON.stringify(value))
 })
 
+// Set the current file sort order for the left and right panes
+const defaultSortOrder = "nameAsc"
+const storedLeftSort: string = JSON.parse(localStorage.getItem("leftSort")) || defaultSortOrder
+export const leftSort = writable(storedLeftSort ? storedLeftSort : defaultSortOrder)
+leftSort.subscribe((value: string) => {
+    localStorage.setItem("leftSort", JSON.stringify(value))
+})
+const storedRightSort: string = JSON.parse(localStorage.getItem("rightSort")) || defaultSortOrder
+export const rightSort = writable(storedRightSort ? storedRightSort : defaultSortOrder)
+rightSort.subscribe((value: string) => {
+    localStorage.setItem("rightSort", JSON.stringify(value))
+})
+
 // Set the home directory
 const storedHomeDir: string = localStorage.getItem("homeDir") || defaultHomeDir
 export const homeDir = writable(storedHomeDir ? storedHomeDir : defaultHomeDir)
