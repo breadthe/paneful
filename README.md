@@ -4,11 +4,12 @@ Cross platform desktop dual-pane file browser. It is an open source alternative 
 
 ## Stack
 
-The app is made with:
+Made with:
 
 - Back-end: [Tauri](https://tauri.app/) + [Rust]()https://www.rust-lang.org/
 - Front-end: [Svelte](https://svelte.dev/)
 - UI: [Tailwind CSS](https://tailwindcss.com/)
+- Icons: [Teenyicons](https://teenyicons.com/)
 - Various packages (check `package.json`)
 
 [](#feature-list)
@@ -26,11 +27,12 @@ The app is made with:
 - <label><input type="checkbox" checked /> Top entry navigates to parent folder.</label>
 - <label><input type="checkbox" checked /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
 - <label><input type="checkbox" checked /> Open a file in its associated app with double click or ENTER.</label>
-- <label><input type="checkbox" /> Quick filter by file name.</label>
 - <label><input type="checkbox" checked /> Select a file/folder with SPACE.</label>
+- <label><input type="checkbox" /> Quick filter by file name.</label>
 
 **Beyond MVP**
 
+- <label><input type="checkbox" checked /> Current folder path is breadcrumbed and navigable.</label>
 - <label><input type="checkbox" /> Dark/light mode with persistence.</label>
 - <label><input type="checkbox" /> Navigate to top/bottom of list with Fn+arrow.</label>
 - <label><input type="checkbox" /> Arrow navigation should scroll the pane.</label>
@@ -43,7 +45,9 @@ The app is made with:
     - <label><input type="checkbox" /> F8 - delete a file/folder or selection.</label>
 - <label><input type="checkbox" /> Sort files by clicking the column header.</label>
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
-- <label><input type="checkbox" checked /> Current folder path is breadcrumbed and navigable.</label>
+- <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
+- <label><input type="checkbox" /> 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.</label>
+- <label><input type="checkbox" /> 🐛 Navigating to a folder should clear any file selections in that pane.</label>
 
 **Nice to have**
 
@@ -64,6 +68,7 @@ The app is made with:
 - <label><input type="checkbox" /> Add granular data for the above 2: total sizes and distinguish between files & folders.</label>
 - <label><input type="checkbox" /> Follow a symlink.</label>
 - <label><input type="checkbox" /> When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.</label>
+- <label><input type="checkbox" /> Bookmarks - mark files & folders as favorite and find them in a list.</label>
 
 ## Download
 
