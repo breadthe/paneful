@@ -5,7 +5,13 @@
 
   // store imports
   import { browser, system } from "./store"
-  const { homeDir, activePane } = browser
+  const {
+    homeDir,
+    activePane,
+    leftCurrentDir,
+    rightCurrentDir,
+    highlightedFile,
+  } = browser
   const { activeSection } = system
 
   // section imports
@@ -15,6 +21,7 @@
   // component imports
   import Nav from "./lib/Nav.svelte"
   import Theme from "./lib/Theme.svelte"
+  import { Panes } from "./types"
 
   const sections = [
     { id: "Browser", component: Browser },
@@ -35,8 +42,16 @@
       })
   }
 
+  function setPaneDirs() {
+    if ($highlightedFile[Panes.Left]?.parent_dir) {
+      leftCurrentDir.set($highlightedFile[Panes.Left]?.parent_dir)
+    }
+    if ($highlightedFile[Panes.Right]?.parent_dir) {
+      rightCurrentDir.set($highlightedFile[Panes.Right]?.parent_dir)
+    }
+  }
+
   const keydownHandler = (event: KeyboardEvent) => {
-    console.log(event)
     if (event.key === "Tab") {
       event.preventDefault()
       $activePane === "left" ? activePane.set("right") : activePane.set("left")
@@ -57,6 +72,8 @@
     invoke("close_splashscreen")
 
     setHomeDir()
+
+    setPaneDirs()
   })
 </script>
 

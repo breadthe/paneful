@@ -2,8 +2,21 @@ import type { HighlightedFile, PaneHighlightedFile } from "../types"
 import { Panes } from "../types"
 import { writable } from "svelte/store"
 
-// Set the home directory
 const defaultHomeDir: string = "/"
+
+// Set the current directory for the left and right panes
+const storedLeftCurrentDir: string = JSON.parse(localStorage.getItem("leftCurrentDir")) || defaultHomeDir
+export const leftCurrentDir = writable(storedLeftCurrentDir ? storedLeftCurrentDir : defaultHomeDir)
+leftCurrentDir.subscribe((value: string) => {
+    localStorage.setItem("leftCurrentDir", JSON.stringify(value))
+})
+const storedRightCurrentDir: string = JSON.parse(localStorage.getItem("rightCurrentDir")) || defaultHomeDir
+export const rightCurrentDir = writable(storedRightCurrentDir ? storedRightCurrentDir : defaultHomeDir)
+rightCurrentDir.subscribe((value: string) => {
+    localStorage.setItem("rightCurrentDir", JSON.stringify(value))
+})
+
+// Set the home directory
 const storedHomeDir: string = localStorage.getItem("homeDir") || defaultHomeDir
 export const homeDir = writable(storedHomeDir ? storedHomeDir : defaultHomeDir)
 homeDir.subscribe((value: string) => {

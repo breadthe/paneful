@@ -11,7 +11,7 @@
   //   import { system } from "../store"
   //   const { theme } = system
   import { browser } from "../store"
-  const { activePane, homeDir, highlightedFile } = browser
+  const { activePane, homeDir, highlightedFile, leftCurrentDir, rightCurrentDir } = browser
 
   // component imports
   import FileItem from "./FileItem.svelte"
@@ -21,19 +21,15 @@
   // check which pane is active from the $highlightedFile store and get the files from the path
   let currentDir: string
   $: {
-    if ($highlightedFile && $highlightedFile[pane]?.path) {
-      currentDir = $highlightedFile[pane]?.path
-
-      // remove the file name from the path if it's anything but the parent directory ".."
-      if ($highlightedFile[pane]?.name !== "..") {
-        currentDir = $highlightedFile[pane]?.path
-          .split("/")
-          .slice(0, -1)
-          .join("/") // /Users/<my-user>/.rustup -> /Users/<my-user>
-      }
+    if (pane === Panes.Left && $leftCurrentDir) {
+        currentDir = $leftCurrentDir
+    } else if (pane === Panes.Right && $rightCurrentDir) {
+        currentDir = $rightCurrentDir
     } else {
       currentDir = JSON.parse($homeDir) // /Users/<my-user>
     }
+
+    getFiles()
   }
 
   let dirListing: Array<FileEntry> = []

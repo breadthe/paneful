@@ -6,13 +6,20 @@
   //   import { onMount } from "svelte"
 
   // type imports
-  import type { FileEntry, HighlightedFile, Panes } from "../types"
+  import type { FileEntry, HighlightedFile } from "../types"
+  import { Panes } from "../types"
 
   // store imports
   //   import { system } from "../store"
   //   const { theme } = system
   import { browser } from "../store"
-  const { activePane, homeDir, highlightedFile } = browser
+  const {
+    activePane,
+    homeDir,
+    highlightedFile,
+    leftCurrentDir,
+    rightCurrentDir,
+  } = browser
 
   export let pane: Panes
   export let file: FileEntry | undefined = undefined
@@ -40,12 +47,47 @@
 
     highlightedFile.set(hlFile)
   }
+
+  function handleDoubleClick() {
+    if (file?.is_dir) {
+      // navigate one directory up
+      if (pane === Panes.Left && file?.parent_dir) {
+        if (isParent) {
+          leftCurrentDir.set(file?.parent_dir)
+        } else {
+          leftCurrentDir.set(file?.path)
+        }
+      }
+
+      // navigate one directory up
+      if (pane === Panes.Right && file?.parent_dir) {
+        if (isParent) {
+          rightCurrentDir.set(file?.parent_dir)
+        } else {
+          rightCurrentDir.set(file?.path)
+        }
+      }
+
+      // set the highlighted file in the new directory to the parent directory ".."
+      const hlFile: HighlightedFile = {
+        pane,
+        name: parentDirGenericName,
+        path: isParent ? file?.parent_dir : file?.path,
+        parent_dir: isParent
+          ? file?.parent_dir.split("/").slice(0, -1).join("/") || // /Users/<my-user> -> /Users
+            JSON.parse($homeDir)
+          : file?.parent_dir,
+      }
+      highlightedFile.set(hlFile)
+    }
+  }
 </script>
 
 <tr
   class:bg-blue-600={isHighlighted}
   class:text-white={isHighlighted}
   on:click={() => setHighlightedFile()}
+  on:dblclick={() => handleDoubleClick()}
 >
   <td class="flex items-center gap-2 border-r border-gray-300">
     {#if isParent || file.is_dir}
@@ -77,8 +119,8 @@
         {new Date(file.modified.secs_since_epoch * 1000).toLocaleString()}
       {/if}
     </div>
-  </td></tr
->
+  </td>
+</tr>
 
 <style>
   td {

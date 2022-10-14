@@ -18,15 +18,15 @@ The app is made with:
 **MVP**
 
 - <label><input type="checkbox" checked /> Dual-pane, resizeable layout.</label>
-- <label><input type="checkbox" /> Show file name, extension, size, modified date, kind (file, folder, etc).</label>
+- <label><input type="checkbox" checked /> Show file name, extension, size, modified date, kind (file, folder, etc).</label>
 - <label><input type="checkbox" checked /> Start by default in the Home directory.</label>
-- <label><input type="checkbox" /> Remember the directory location in each pane when quitting the app.</label>
-- <label><input type="checkbox" /> Switch between panes with TAB.</label>
-- <label><input type="checkbox" /> Show directories first.</label>
+- <label><input type="checkbox" checked /> Remember the directory location in each pane when quitting the app.</label>
+- <label><input type="checkbox" checked /> Switch between panes with TAB.</label>
+- <label><input type="checkbox" checked /> Show directories first.</label>
 - <label><input type="checkbox" /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
 - <label><input type="checkbox" /> Select a file/folder with SPACE.</label>
 - <label><input type="checkbox" /> Open a file in its associated app with ENTER.</label>
-- <label><input type="checkbox" /> Top entry navigates to parent folder.</label>
+- <label><input type="checkbox" checked /> Top entry navigates to parent folder.</label>
 - <label><input type="checkbox" /> Quick filter by file name.</label>
 
 **Beyond MVP**
@@ -57,6 +57,7 @@ The app is made with:
 - <label><input type="checkbox" /> Remember sorting, filtering, etc for each pane when quitting.</label>
 - <label><input type="checkbox" /> Remember pane split.</label>
 - <label><input type="checkbox" /> Remember app window size & position.</label>
+- <label><input type="checkbox" /> Summary of file counts & sizes below each pane.</label>
 
 ## Download
 
