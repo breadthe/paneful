@@ -73,7 +73,8 @@
 
     setHomeDir()
 
-    setPaneDirs()
+    // @todo this isn't working as I expected, most likely needs to be removed
+    // setPaneDirs()
   })
 </script>
 
