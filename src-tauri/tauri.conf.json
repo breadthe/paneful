@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "paneful",
+    "productName": "Paneful",
     "version": "0.2.0"
   },
   "tauri": {
