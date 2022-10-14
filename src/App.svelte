@@ -53,7 +53,7 @@
   }
 
   const keydownHandler = (event: KeyboardEvent) => {
-    switch (event.key) {
+    switch (event.code) {
       case "Tab":
         event.preventDefault()
         $activePane === Panes.Left

@@ -93,7 +93,7 @@
     const nextFile = sortedDirListing[ix + 1]
     const prevFile = sortedDirListing[ix - 1]
 
-    switch (event.key) {
+    switch (event.code) {
       case "ArrowUp":
         event.preventDefault()
         if (prevFile) {
