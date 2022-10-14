@@ -3,7 +3,7 @@
     windows_subsystem = "windows"
 )]
 
-use std::{env, fs::{self, FileType}, fs::Metadata, path::Path, process::{Command, Stdio}, time::SystemTime};
+use std::{fs::{self, FileType}, fs::Metadata, time::SystemTime};
 use tauri::{Manager, Menu, MenuItem, Submenu};
 
 use human_bytes::human_bytes;
