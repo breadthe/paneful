@@ -27,12 +27,13 @@ The app is made with:
 - <label><input type="checkbox" checked /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
 - <label><input type="checkbox" checked /> Open a file in its associated app with double click or ENTER.</label>
 - <label><input type="checkbox" /> Quick filter by file name.</label>
-- <label><input type="checkbox" /> Select a file/folder with SPACE.</label>
+- <label><input type="checkbox" checked /> Select a file/folder with SPACE.</label>
 
 **Beyond MVP**
 
 - <label><input type="checkbox" /> Dark/light mode with persistence.</label>
-- <label><input type="checkbox" /> Navigate to top/bottom of list with ???.</label>
+- <label><input type="checkbox" /> Navigate to top/bottom of list with Fn+arrow.</label>
+- <label><input type="checkbox" /> Arrow navigation should scroll the pane.</label>
 - <label><input type="checkbox" /> Simple controls for:</label>
     - <label><input type="checkbox" checked /> F3 - view file (opens in associated app), also works with double click or ENTER.</label>
     - <label><input type="checkbox" /> F4 - edit file (opens in text editor).</label>
@@ -59,6 +60,7 @@ The app is made with:
 - <label><input type="checkbox" /> Remember pane split.</label>
 - <label><input type="checkbox" /> Remember app window size & position.</label>
 - <label><input type="checkbox" /> Summary of file counts & sizes below each pane.</label>
+- <label><input type="checkbox" /> Selecting files shows a summary below each pane.</label>
 - <label><input type="checkbox" /> Follow a symlink.</label>
 - <label><input type="checkbox" /> When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.</label>
 

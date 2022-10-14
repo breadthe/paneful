@@ -19,6 +19,7 @@
     highlightedFile,
     leftCurrentDir,
     rightCurrentDir,
+    selectedFiles,
   } = browser
 
   // component imports
@@ -37,6 +38,12 @@
         (!$highlightedFile ||
           ($highlightedFile?.[pane]?.name === parentDirGenericName &&
             isParent))))
+
+  $: isSelected = $selectedFiles?.[pane]?.some(
+    (selectedFile: HighlightedFile) => {
+      return selectedFile.name === file?.name
+    }
+  )
 
   $: thisCurrentDir = eval(`${$activePane}CurrentDir`) // leftCurrentDir or rightCurrentDir
 
@@ -99,11 +106,17 @@
   const keydownHandler = (event: KeyboardEvent) => {
     if (!isHighlighted) return
 
-    switch (event.key) {
+    switch (event.code) {
       case "Enter":
       case "F3":
         event.preventDefault()
         handleAction()
+        break
+
+      case "Space":
+        event.preventDefault()
+        // add the file to the selected files store or remove it if it's already there
+        selectedFiles.toggle(pane, $highlightedFile[pane])
         break
 
       default:
@@ -129,12 +142,12 @@
   on:dblclick={() => handleAction()}
   use:handleGlobalKeys
 >
-  <td class="flex items-center gap-2 border-r border-gray-300">
+  <td class="flex items-center gap-2 border-r border-gray-300" class:bg-blue-100={isSelected && !isHighlighted} class:bg-blue-200={isSelected && isHighlighted}>
     {#if isParent || file.is_dir}
       <FolderIcon />
     {/if}
 
-    <span>
+    <span class:font-bold={isSelected} class:text-blue-600={isSelected}>
       {#if isParent}
         {parentDirGenericName}
       {:else}

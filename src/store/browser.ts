@@ -1,4 +1,4 @@
-import type { HighlightedFile, PaneHighlightedFile } from "../types"
+import type { FileEntry, HighlightedFile, PaneHighlightedFile } from "../types"
 import { Panes } from "../types"
 import { writable } from "svelte/store"
 
@@ -67,3 +67,44 @@ function createHighlightedFileStore() {
     };
 }
 export const highlightedFile = createHighlightedFileStore()
+
+function createSelectedFilesStore() {
+    const emptySelectedFiles = {
+        left: [],
+        right: [],
+    }
+    let storedSelectedFiles = JSON.parse(localStorage.getItem("selectedFiles")) || emptySelectedFiles;
+    const { subscribe, set } = writable(storedSelectedFiles);
+
+    return {
+        subscribe,
+        set: (selectedFilesJson: string) => {
+            localStorage.setItem("selectedFiles", selectedFilesJson);
+        },
+        toggle: (pane: Panes, file: HighlightedFile) => {
+            if (file.name === "..") return
+
+            if (storedSelectedFiles && storedSelectedFiles[pane]) {
+                const ix = storedSelectedFiles[pane].findIndex((f: HighlightedFile) => f.name === file.name);
+                if (ix > -1) {
+                    storedSelectedFiles[pane].splice(ix, 1);
+                } else {
+                    storedSelectedFiles[pane].push(file);
+                }
+            } else {
+                storedSelectedFiles[pane] = [file];
+            }
+
+            storedSelectedFiles = storedSelectedFiles;
+            localStorage.setItem("selectedFiles", JSON.stringify(storedSelectedFiles));
+            set(storedSelectedFiles);
+        },
+        clear: () => {
+            storedSelectedFiles = [];
+
+            localStorage.setItem("selectedFiles", JSON.stringify([]));
+            set(storedSelectedFiles);
+        },
+    };
+}
+export const selectedFiles = createSelectedFilesStore();
