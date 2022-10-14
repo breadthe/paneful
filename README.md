@@ -23,18 +23,18 @@ The app is made with:
 - <label><input type="checkbox" checked /> Remember the directory location in each pane when quitting the app.</label>
 - <label><input type="checkbox" checked /> Switch between panes with TAB.</label>
 - <label><input type="checkbox" checked /> Show directories first.</label>
-- <label><input type="checkbox" /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
-- <label><input type="checkbox" /> Select a file/folder with SPACE.</label>
-- <label><input type="checkbox" /> Open a file in its associated app with ENTER.</label>
 - <label><input type="checkbox" checked /> Top entry navigates to parent folder.</label>
+- <label><input type="checkbox" /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
+- <label><input type="checkbox" checked /> Open a file in its associated app with double click or ENTER.</label>
 - <label><input type="checkbox" /> Quick filter by file name.</label>
+- <label><input type="checkbox" /> Select a file/folder with SPACE.</label>
 
 **Beyond MVP**
 
 - <label><input type="checkbox" /> Dark/light mode with persistence.</label>
 - <label><input type="checkbox" /> Navigate to top/bottom of list with ???.</label>
 - <label><input type="checkbox" /> Simple controls for:</label>
-    - <label><input type="checkbox" /> F3 - view file (opens in associated app), also works with ENTER.</label>
+    - <label><input type="checkbox" /> F3 - view file (opens in associated app), also works with double click or ENTER.</label>
     - <label><input type="checkbox" /> F4 - edit file (opens in text editor).</label>
     - <label><input type="checkbox" /> F5 - copy a file/folder or selection to the other pane.</label>
     - <label><input type="checkbox" /> F6 - move a file/folder or selection to the other pane.</label>
@@ -59,7 +59,7 @@ The app is made with:
 - <label><input type="checkbox" /> Remember app window size & position.</label>
 - <label><input type="checkbox" /> Summary of file counts & sizes below each pane.</label>
 - <label><input type="checkbox" /> Follow a symlink.</label>
-- <label><input type="checkbox" /> When navigating up a folder (back), , set the highlighted file to the directory that was navigated from instead of defaulting to "..".</label>
+- <label><input type="checkbox" /> When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.</label>
 
 ## Download
 

@@ -1,5 +1,7 @@
 <script lang="ts">
   // system/lib/util imports
+  import { convertFileSrc } from "@tauri-apps/api/tauri"
+  import { open } from "@tauri-apps/api/shell"
   //   import { invoke } from "@tauri-apps/api/tauri"
   //   import { onMount } from "svelte"
 
@@ -51,8 +53,24 @@
     highlightedFile.set(hlFile)
   }
 
-  function handleDoubleClick() {
-    navigateToDir()
+  async function openFile(filePath: string) {
+    if (!filePath) return
+
+    // @see https://tauri.app/v1/api/js/modules/tauri/#convertfilesrc
+    const fileSrc = convertFileSrc(filePath)
+
+    await open(`file://${fileSrc}`)
+  }
+
+  // handle double-clicking or ENTER on a file
+  function handleAction() {
+    if (file.is_dir) {
+      navigateToDir()
+    }
+
+    if (file.is_file) {
+      openFile(file.path)
+    }
   }
 
   // get the highlighted file in the current pane and if is a directory, set the current dir for the current pane to that directory
@@ -84,7 +102,7 @@
     switch (event.key) {
       case "Enter":
         event.preventDefault()
-        navigateToDir()
+        handleAction()
         break
 
       default:
@@ -107,7 +125,7 @@
   class:bg-blue-600={isHighlighted}
   class:text-white={isHighlighted}
   on:click={() => setHighlightedFile()}
-  on:dblclick={() => handleDoubleClick()}
+  on:dblclick={() => handleAction()}
   use:handleGlobalKeys
 >
   <td class="flex items-center gap-2 border-r border-gray-300">
