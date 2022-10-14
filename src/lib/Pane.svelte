@@ -22,6 +22,7 @@
   // component imports
   import FileItem from "./FileItem.svelte"
   import CurrentDir from "./CurrentDir.svelte"
+  import SelectedFiles from "./SelectedFiles.svelte"
 
   export let pane: Panes = Panes.Left
 
@@ -159,7 +160,7 @@
 >
   <CurrentDir {pane} {currentDir} />
 
-  <div class="h-full w-full overflow-y-auto">
+  <div class="h-full w-full overflow-y-auto" style="height: calc(100vh - 160px);">
     <table class="w-full">
       <thead>
         <tr class="border-b border-gray-300 text-sm">
@@ -182,6 +183,8 @@
       </tbody>
     </table>
   </div>
+
+  <SelectedFiles totalFiles={dirListing.length} {pane} />
 </aside>
 
 <style>

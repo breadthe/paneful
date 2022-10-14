@@ -59,8 +59,9 @@ The app is made with:
 - <label><input type="checkbox" /> Remember sorting, filtering, etc for each pane when quitting.</label>
 - <label><input type="checkbox" /> Remember pane split.</label>
 - <label><input type="checkbox" /> Remember app window size & position.</label>
-- <label><input type="checkbox" /> Summary of file counts & sizes below each pane.</label>
-- <label><input type="checkbox" /> Selecting files shows a summary below each pane.</label>
+- <label><input type="checkbox" checked /> Summary of file counts & sizes below each pane.</label>
+- <label><input type="checkbox" checked /> Selecting files shows a summary below each pane.</label>
+- <label><input type="checkbox" /> Add granular data for the above 2: total sizes and distinguish between files & folders.</label>
 - <label><input type="checkbox" /> Follow a symlink.</label>
 - <label><input type="checkbox" /> When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.</label>
 
