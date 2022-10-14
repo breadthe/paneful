@@ -66,8 +66,13 @@
     } else if (!a.is_dir && b.is_dir) {
       return 1
     } else {
+      // sort by name
       if ($thisPaneSort === "nameAsc") return a.name.localeCompare(b.name)
       if ($thisPaneSort === "nameDesc") return b.name.localeCompare(a.name)
+
+      // sort by size
+      if ($thisPaneSort === "sizeAsc") return a.size - b.size
+      if ($thisPaneSort === "sizeDesc") return b.size - a.size
     }
   })
 
@@ -94,13 +99,25 @@
   function sortFilesBy(field: string) {
     switch (field) {
       case "name":
-        if ($thisPaneSort === "nameAsc") {
+        if (!$thisPaneSort.startsWith("name") || $thisPaneSort === "nameAsc") {
           thisPaneSort.set("nameDesc")
           break
         }
 
-        if ($thisPaneSort === "nameDesc") {
+        if (!$thisPaneSort.startsWith("name") || $thisPaneSort === "nameDesc") {
           thisPaneSort.set("nameAsc")
+          break
+        }
+        break
+
+      case "size":
+        if (!$thisPaneSort.startsWith("size") || $thisPaneSort === "sizeAsc") {
+          thisPaneSort.set("sizeDesc")
+          break
+        }
+
+        if (!$thisPaneSort.startsWith("size") || $thisPaneSort === "sizeDesc") {
+          thisPaneSort.set("sizeAsc")
           break
         }
         break
@@ -194,23 +211,36 @@
       <thead>
         <tr class="border-b border-gray-300 dark:border-gray-700 text-sm">
           <th
-            class="flex items-center justify-between text-left border-r border-gray-300 dark:border-gray-700 cursor-pointer"
+            class="border-r border-gray-300 dark:border-gray-700 cursor-pointer"
             on:click={() => sortFilesBy("name")}
           >
-            <span>name</span>
+            <div class="flex items-center justify-between gap-2">
+              <span class="w-full text-left">name</span>
 
-            {#if $thisPaneSort === "nameAsc"}
-              <!-- <button on:click={() => sortFilesBy("name")} class="cursor-pointer"><DownSmallIcon /></button> -->
-              <DownSmallIcon />
-            {/if}
+              {#if $thisPaneSort === "nameAsc"}
+                <DownSmallIcon />
+              {/if}
 
-            {#if $thisPaneSort === "nameDesc"}
-              <!-- <button on:click={() => sortFilesBy("name")} class="cursor-pointer"><UpSmallIcon /></button> -->
-              <UpSmallIcon />
-            {/if}
+              {#if $thisPaneSort === "nameDesc"}
+                <UpSmallIcon />
+              {/if}
+            </div>
           </th>
-          <th class="text-right border-r border-gray-300 dark:border-gray-700">
-            size
+          <th
+            class="border-r border-gray-300 dark:border-gray-700 cursor-pointer"
+            on:click={() => sortFilesBy("size")}
+          >
+            <div class="flex items-center justify-between gap-2">
+              <span class="w-full text-right">size</span>
+
+              {#if $thisPaneSort === "sizeAsc"}
+                <DownSmallIcon />
+              {/if}
+
+              {#if $thisPaneSort === "sizeDesc"}
+                <UpSmallIcon />
+              {/if}
+            </div>
           </th>
           <th class="text-left">modified</th>
         </tr>
