@@ -14,7 +14,7 @@
   <div class="flex justify-between">
     <!-- app logo -->
     <div class="flex items-center gap-2">
-        <img src="/public/128x128.png" alt="Paneful logo" class="w-8 h-8" />
+        <img src="/128x128.png" alt="Paneful logo" class="w-8 h-8" />
         <span class="font-bold font-mono">Paneful</span>
     </div>
 
