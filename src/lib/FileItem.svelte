@@ -166,5 +166,13 @@
     cursor: theme("cursor.default");
     font-size: theme("fontSize.sm");
     padding: 0 theme("spacing.1");
+
+    /* Disable selection of the underlying content when double-clicking a folder */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 </style>
