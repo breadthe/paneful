@@ -23,7 +23,10 @@
   $: isHighlighted =
     pane === $activePane &&
     ($highlightedFile?.[pane]?.name === file?.name ||
-      (!$highlightedFile && isParent))
+      (isParent &&
+        (!$highlightedFile ||
+          ($highlightedFile?.[pane]?.name === parentDirGenericName &&
+            isParent))))
 
   function setHighlightedFile() {
     activePane.set(pane)
