@@ -25,6 +25,7 @@
   :global(.splitpanes) {
     height: calc(100vh - 100px);
   }
+
   :global(.splitpanes__pane) {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset;
     justify-content: center;
@@ -32,5 +33,15 @@
     display: flex;
     position: relative;
     height: 100%;
+  }
+
+  :global(html.dark .splitpanes__pane) {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    height: 100%;
+    background-color: theme("colors.gray.800") !important;
   }
 </style>

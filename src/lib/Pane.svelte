@@ -163,9 +163,9 @@
   <div class="h-full w-full overflow-y-auto" style="height: calc(100vh - 160px);">
     <table class="w-full">
       <thead>
-        <tr class="border-b border-gray-300 text-sm">
-          <th class="text-left border-r border-gray-300">name</th>
-          <th class="text-right border-r border-gray-300">size</th>
+        <tr class="border-b border-gray-300 dark:border-gray-700 text-sm">
+          <th class="text-left border-r border-gray-300 dark:border-gray-700">name</th>
+          <th class="text-right border-r border-gray-300 dark:border-gray-700">size</th>
           <th class="text-left">modified</th>
         </tr>
       </thead>
@@ -179,7 +179,7 @@
         {/each}
 
         <!-- hack to prevent the last file from being hidden -->
-        <tr><td colspan="3">&nbsp;</td></tr>
+        <!-- <tr><td colspan="3">&nbsp;</td></tr> -->
       </tbody>
     </table>
   </div>
@@ -189,16 +189,26 @@
 
 <style>
   aside {
-    border: theme("borderWidth.2") solid theme("colors.gray.300");
+    border: theme("borderWidth.2") solid;
+    border-color: theme("colors.gray.300");
   }
+
+  :global(html.dark aside) {
+    border-color: theme("colors.gray.700");
+  }
+
   aside.active {
     border: theme("borderWidth.2") solid theme("colors.blue.600");
   }
 
-  th {
+  :global(th) {
     background-color: theme("colors.gray.300");
     position: sticky;
     top: theme("spacing.0");
     padding: 0 theme("spacing.1");
+  }
+
+  :global(html.dark th) {
+    background-color: theme("colors.gray.700") !important;
   }
 </style>

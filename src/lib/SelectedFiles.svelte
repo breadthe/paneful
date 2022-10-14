@@ -12,7 +12,7 @@
   $: selectedFilesCount = $selectedFiles[pane]?.length ?? 0
 </script>
 
-<footer class="bg-gray-300 text-sm p-1 text-center">
+<footer class="bg-gray-300 dark:bg-gray-700 text-sm p-1 text-center">
   {totalFiles} / {selectedFilesCount} file(s)
 </footer>
 

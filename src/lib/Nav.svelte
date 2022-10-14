@@ -10,7 +10,7 @@
   import SettingsButton from "./SettingsButton.svelte"
 </script>
 
-<nav class="w-full py-2 bg-white dark:bg-neutral-800">
+<nav class="w-full py-2 bg-white dark:bg-gray-800">
   <div class="flex justify-between px-2">
     <!-- app logo -->
     <div class="flex items-center gap-2">

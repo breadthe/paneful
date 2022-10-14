@@ -142,7 +142,7 @@
   on:dblclick={() => handleAction()}
   use:handleGlobalKeys
 >
-  <td class="flex items-center gap-2 border-r border-gray-300" class:bg-blue-100={isSelected && !isHighlighted} class:bg-blue-200={isSelected && isHighlighted}>
+  <td class="flex items-center gap-2 border-r border-gray-300 dark:border-gray-700" class:bg-blue-100={isSelected && !isHighlighted} class:bg-blue-200={isSelected && isHighlighted}>
     {#if isParent || file.is_dir}
       <FolderIcon />
     {/if}
@@ -155,7 +155,7 @@
       {/if}
     </span>
   </td>
-  <td class="text-right flex-grow border-r border-gray-300">
+  <td class="text-right flex-grow border-r border-gray-300 dark:border-gray-700">
     {#if typeof file !== "undefined"}
       <span title={file?.size?.toString() || ""}>
         {#if file.is_file}

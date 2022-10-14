@@ -33,7 +33,7 @@ Made with:
 **Beyond MVP**
 
 - <label><input type="checkbox" checked /> Current folder path is breadcrumbed and navigable.</label>
-- <label><input type="checkbox" /> Dark/light mode with persistence.</label>
+- <label><input type="checkbox" checked /> Dark/light mode with persistence.</label>
 - <label><input type="checkbox" /> Navigate to top/bottom of list with Fn+arrow.</label>
 - <label><input type="checkbox" /> Arrow navigation should scroll the pane.</label>
 - <label><input type="checkbox" /> Simple controls for:</label>
@@ -48,6 +48,7 @@ Made with:
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
 - <label><input type="checkbox" /> 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.</label>
 - <label><input type="checkbox" /> 🐛 Navigating to a folder should clear any file selections in that pane.</label>
+- <label><input type="checkbox" /> 🐛 F-keys in the command bar are not clickable.</label>
 
 **Nice to have**
 
@@ -69,6 +70,7 @@ Made with:
 - <label><input type="checkbox" /> Follow a symlink.</label>
 - <label><input type="checkbox" /> When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.</label>
 - <label><input type="checkbox" /> Bookmarks - mark files & folders as favorite and find them in a list.</label>
+- <label><input type="checkbox" /> Apply dark theme to scrollbars as well.</label>
 
 ## Download
 
