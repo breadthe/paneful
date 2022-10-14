@@ -31,10 +31,11 @@
     const hlFile: HighlightedFile = {
       pane,
       name: file?.name || parentDirGenericName,
-      path: file?.path || "",
+      path: file?.path || file?.parent_dir || "",
+      parent_dir: file?.parent_dir || "",
     }
 
-    highlightedFile.set(isParent ? null : hlFile)
+    highlightedFile.set(hlFile)
   }
 </script>
 

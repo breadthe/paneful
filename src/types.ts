@@ -1,9 +1,9 @@
 export enum AlertTypes {
-  Error = "error",
-  Info = "info",
-  Success = "success",
-  Warning = "warning",
-  Neutral = "neutral",
+    Error = "error",
+    Info = "info",
+    Success = "success",
+    Warning = "warning",
+    Neutral = "neutral",
 }
 
 // mirrors Rust's SystemTime
@@ -40,6 +40,7 @@ export interface HighlightedFile {
     pane: Panes;
     name: string | null;
     path: string | null;
+    parent_dir: string | null;
 }
 
 // tracks the highlighted file for each pane
