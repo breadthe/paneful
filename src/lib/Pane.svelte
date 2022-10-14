@@ -104,6 +104,16 @@
           }
 
           highlightedFile.set(hlFile)
+        } else {
+          // the parent ".." folder is highlighted
+          const hlFile: HighlightedFile = {
+            pane,
+            name: parentDirGenericName,
+            path: parentFolder.path,
+            parent_dir: parentFolder.parent_dir,
+          }
+
+          highlightedFile.set(hlFile)
         }
         break
 

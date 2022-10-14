@@ -24,7 +24,7 @@ The app is made with:
 - <label><input type="checkbox" checked /> Switch between panes with TAB.</label>
 - <label><input type="checkbox" checked /> Show directories first.</label>
 - <label><input type="checkbox" checked /> Top entry navigates to parent folder.</label>
-- <label><input type="checkbox" /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
+- <label><input type="checkbox" checked /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
 - <label><input type="checkbox" checked /> Open a file in its associated app with double click or ENTER.</label>
 - <label><input type="checkbox" /> Quick filter by file name.</label>
 - <label><input type="checkbox" /> Select a file/folder with SPACE.</label>
@@ -42,6 +42,7 @@ The app is made with:
     - <label><input type="checkbox" /> F8 - delete a file/folder or selection.</label>
 - <label><input type="checkbox" /> Sort files by clicking the column header.</label>
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the Home directory.</label>
+- <label><input type="checkbox" /> Current folder path is breadcrumbed and navigable.</label>
 
 **Nice to have**
 
