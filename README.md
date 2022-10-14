@@ -41,8 +41,8 @@ The app is made with:
     - <label><input type="checkbox" /> F7 - create new folder in the active pane.</label>
     - <label><input type="checkbox" /> F8 - delete a file/folder or selection.</label>
 - <label><input type="checkbox" /> Sort files by clicking the column header.</label>
-- <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the Home directory.</label>
-- <label><input type="checkbox" /> Current folder path is breadcrumbed and navigable.</label>
+- <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
+- <label><input type="checkbox" checked /> Current folder path is breadcrumbed and navigable.</label>
 
 **Nice to have**
 

@@ -21,6 +21,7 @@
 
   // component imports
   import FileItem from "./FileItem.svelte"
+  import CurrentDir from "./CurrentDir.svelte"
 
   export let pane: Panes = Panes.Left
 
@@ -156,9 +157,7 @@
   class:active={$activePane === pane}
   use:handleGlobalKeys
 >
-  <div class="p-1 bg-gray-600 text-white text-sm">
-    {currentDir}
-  </div>
+  <CurrentDir {pane} {currentDir} />
 
   <div class="h-full w-full overflow-y-auto">
     <table class="w-full">
