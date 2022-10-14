@@ -101,6 +101,7 @@
 
     switch (event.key) {
       case "Enter":
+      case "F3":
         event.preventDefault()
         handleAction()
         break

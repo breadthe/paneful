@@ -34,7 +34,7 @@ The app is made with:
 - <label><input type="checkbox" /> Dark/light mode with persistence.</label>
 - <label><input type="checkbox" /> Navigate to top/bottom of list with ???.</label>
 - <label><input type="checkbox" /> Simple controls for:</label>
-    - <label><input type="checkbox" /> F3 - view file (opens in associated app), also works with double click or ENTER.</label>
+    - <label><input type="checkbox" checked /> F3 - view file (opens in associated app), also works with double click or ENTER.</label>
     - <label><input type="checkbox" /> F4 - edit file (opens in text editor).</label>
     - <label><input type="checkbox" /> F5 - copy a file/folder or selection to the other pane.</label>
     - <label><input type="checkbox" /> F6 - move a file/folder or selection to the other pane.</label>
