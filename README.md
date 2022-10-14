@@ -77,6 +77,7 @@ Made with:
 - <label><input type="checkbox" /> 🐛 Production builds are failing across platforms.</label>
 - <label><input type="checkbox" /> 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.</label>
 - <label><input type="checkbox" /> 🐛 Navigating to a folder should clear any file selections in that pane.</label>
+- <label><input type="checkbox" /> 🐛 Sorting a column header in a tab should make that tab active.</label>
 - <label><input type="checkbox" /> 🐛 F-keys in the command bar are not clickable.</label>
 - <label><input type="checkbox" /> Windows:</label>
     - <label><input type="checkbox" /> 🐛 It starts in an empty nameless folder with only the parent ".." folder. Navigating to it goes to "C:\Users\<my-user>". From there I can't navigate to the parent folder due to permissions, but I can navigate to folders within.</label>
