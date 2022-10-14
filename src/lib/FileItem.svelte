@@ -1,6 +1,4 @@
 <script lang="ts">
-  import FolderIcon from "./icons/FolderIcon.svelte"
-
   // system/lib/util imports
   //   import { invoke } from "@tauri-apps/api/tauri"
   //   import { onMount } from "svelte"
@@ -20,6 +18,9 @@
     leftCurrentDir,
     rightCurrentDir,
   } = browser
+
+  // component imports
+  import FolderIcon from "./icons/FolderIcon.svelte"
 
   export let pane: Panes
   export let file: FileEntry | undefined = undefined
