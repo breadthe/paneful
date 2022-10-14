@@ -16,14 +16,14 @@ export interface SystemTime {
 export interface FileEntry {
     name: string;
     path: string;
-    extension: string;
+    extension?: string;
     parent_dir: string;
     is_dir: boolean;
     is_file: boolean;
     is_symlink: boolean;
-    size: number;
-    size_pretty: string;
-    modified: SystemTime;
+    size?: number;
+    size_pretty?: string;
+    modified?: SystemTime;
 }
 
 export interface DirectoryListing {
@@ -48,9 +48,11 @@ export interface PaneHighlightedFile {
     left: {
         name: string | null;
         path: string | null;
+        parent_dir: string | null;
     },
     right: {
         name: string | null;
         path: string | null;
+        parent_dir: string | null;
     },
 }

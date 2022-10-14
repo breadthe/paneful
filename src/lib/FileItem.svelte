@@ -35,7 +35,7 @@
       pane,
       name: file?.name || parentDirGenericName,
       path: file?.path || file?.parent_dir || "",
-      parent_dir: file?.parent_dir || "",
+      parent_dir: file?.parent_dir || JSON.parse($homeDir),
     }
 
     highlightedFile.set(hlFile)
@@ -62,7 +62,7 @@
   </td>
   <td class="text-right flex-grow border-r border-gray-300">
     {#if typeof file !== "undefined"}
-      <span title={file.size.toString()}>
+      <span title={file?.size?.toString() || ""}>
         {#if file.is_file}
           {file.size_pretty}
         {:else if file.is_dir}
@@ -73,7 +73,7 @@
   </td>
   <td class="">
     <div class="w-full overflow-hidden">
-      {#if typeof file !== "undefined"}
+      {#if typeof file !== "undefined" && file?.modified?.secs_since_epoch}
         {new Date(file.modified.secs_since_epoch * 1000).toLocaleString()}
       {/if}
     </div>

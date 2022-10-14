@@ -25,10 +25,12 @@ function createHighlightedFileStore() {
         left: {
             name: null,
             path: null,
+            parent_dir: null,
         },
         right: {
             name: null,
             path: null,
+            parent_dir: null,
         },
     }
     let storedHighlightedFile: PaneHighlightedFile = JSON.parse(localStorage.getItem("highlightedFile")) || emptyPaneHighlightedFile
@@ -40,9 +42,9 @@ function createHighlightedFileStore() {
             let newHighlightedFile: PaneHighlightedFile = storedHighlightedFile || emptyPaneHighlightedFile
 
             if (newHighlightedFile && newHighlightedFile[hlFile.pane]) {
-                newHighlightedFile[hlFile.pane] = { name: hlFile.name, path: hlFile.path }
+                newHighlightedFile[hlFile.pane] = { name: hlFile.name, path: hlFile.path, parent_dir: hlFile.parent_dir }
             } else {
-                newHighlightedFile[hlFile.pane === Panes.Left ? Panes.Left : Panes.Right] = { name: hlFile.name, path: hlFile.path }
+                newHighlightedFile[hlFile.pane === Panes.Left ? Panes.Left : Panes.Right] = { name: hlFile.name, path: hlFile.path, parent_dir: hlFile.parent_dir }
             }
 
             storedHighlightedFile = newHighlightedFile

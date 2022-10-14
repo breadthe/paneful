@@ -11,17 +11,41 @@
   //   import { system } from "../store"
   //   const { theme } = system
   import { browser } from "../store"
-  const { activePane, homeDir } = browser
+  const { activePane, homeDir, highlightedFile } = browser
 
   // component imports
   import FileItem from "./FileItem.svelte"
 
   export let pane: Panes = Panes.Left
 
-  // @todo this needs to check which pane is active from the $highlightedFile store and get the files from the path
-  $: currentDir = JSON.parse($homeDir)
+  // check which pane is active from the $highlightedFile store and get the files from the path
+  let currentDir: string
+  $: {
+    if ($highlightedFile && $highlightedFile[pane]?.path) {
+      currentDir = $highlightedFile[pane]?.path
+
+      // remove the file name from the path if it's anything but the parent directory ".."
+      if ($highlightedFile[pane]?.name !== "..") {
+        currentDir = $highlightedFile[pane]?.path
+          .split("/")
+          .slice(0, -1)
+          .join("/") // /Users/<my-user>/.rustup -> /Users/<my-user>
+      }
+    } else {
+      currentDir = JSON.parse($homeDir) // /Users/<my-user>
+    }
+  }
 
   let dirListing: Array<FileEntry> = []
+
+  const parentFolder: FileEntry = {
+    name: "..",
+    path: "",
+    parent_dir: "",
+    is_dir: true,
+    is_file: false,
+    is_symlink: false,
+  }
 
   // sort directory listing first by type (folders first) and then by name
   $: sortedDirListing = dirListing.sort((a, b) => {
@@ -39,6 +63,12 @@
     await invoke("get_files_in_dir", { dirPath: currentDir })
       .then((res: string) => {
         dirListing = JSON.parse(res)
+
+        parentFolder.path = dirListing[0].parent_dir // @todo this is a hack, need to find a better way to get the parent dir
+        parentFolder.parent_dir = dirListing[0].parent_dir
+          .split("/")
+          .slice(0, -1)
+          .join("/") // /Users/<my-user> -> /Users
       })
       .catch((err) => {
         console.log(err)
@@ -70,7 +100,7 @@
 
       <tbody>
         <!-- parent folder ".." -->
-        <FileItem {pane} isParent />
+        <FileItem {pane} file={parentFolder} isParent />
 
         {#each sortedDirListing as file}
           <FileItem {pane} {file} />
