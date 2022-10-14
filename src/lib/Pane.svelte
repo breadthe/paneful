@@ -1,17 +1,23 @@
 <script lang="ts">
   // system/lib/util imports
   import { invoke } from "@tauri-apps/api/tauri"
-  import type { FileEntry } from "../types"
-  import { Panes } from "../types"
   import { onMount } from "svelte"
 
   // type imports
+  import type { FileEntry, HighlightedFile } from "../types"
+  import { Panes } from "../types"
 
   // store imports
   //   import { system } from "../store"
   //   const { theme } = system
   import { browser } from "../store"
-  const { activePane, homeDir, highlightedFile, leftCurrentDir, rightCurrentDir } = browser
+  const {
+    activePane,
+    homeDir,
+    highlightedFile,
+    leftCurrentDir,
+    rightCurrentDir,
+  } = browser
 
   // component imports
   import FileItem from "./FileItem.svelte"
@@ -22,9 +28,9 @@
   let currentDir: string
   $: {
     if (pane === Panes.Left && $leftCurrentDir) {
-        currentDir = $leftCurrentDir
+      currentDir = $leftCurrentDir
     } else if (pane === Panes.Right && $rightCurrentDir) {
-        currentDir = $rightCurrentDir
+      currentDir = $rightCurrentDir
     } else {
       currentDir = JSON.parse($homeDir) // /Users/<my-user>
     }
@@ -34,8 +40,10 @@
 
   let dirListing: Array<FileEntry> = []
 
+  const parentDirGenericName: string = ".."
+
   const parentFolder: FileEntry = {
-    name: "..",
+    name: parentDirGenericName,
     path: "",
     parent_dir: "",
     is_dir: true,
@@ -74,12 +82,70 @@
       })
   }
 
+  const keydownHandler = (event: KeyboardEvent) => {
+    if ($activePane !== pane) return
+
+    const currentHighlightedFile = $highlightedFile[pane]
+    const ix = sortedDirListing.findIndex(
+      (f) => f.name === currentHighlightedFile.name
+    )
+    const nextFile = sortedDirListing[ix + 1]
+    const prevFile = sortedDirListing[ix - 1]
+
+    switch (event.key) {
+      case "ArrowUp":
+        event.preventDefault()
+        if (prevFile) {
+          const hlFile: HighlightedFile = {
+            pane,
+            name: prevFile?.name || parentDirGenericName,
+            path: prevFile?.path || prevFile?.parent_dir || "",
+            parent_dir: prevFile?.parent_dir || JSON.parse($homeDir),
+          }
+
+          highlightedFile.set(hlFile)
+        }
+        break
+
+      case "ArrowDown":
+        event.preventDefault()
+        if (nextFile) {
+          const hlFile: HighlightedFile = {
+            pane,
+            name: nextFile?.name || parentDirGenericName,
+            path: nextFile?.path || nextFile?.parent_dir || "",
+            parent_dir: nextFile?.parent_dir || JSON.parse($homeDir),
+          }
+
+          highlightedFile.set(hlFile)
+        }
+        break
+
+      default:
+        break
+    }
+  }
+
+  function handleGlobalKeys(_node: HTMLElement) {
+    document.addEventListener("keydown", keydownHandler)
+
+    return {
+      destroy() {
+        document.removeEventListener("keydown", keydownHandler)
+      },
+    }
+  }
+
   onMount(() => {
     getFiles()
   })
 </script>
 
-<aside class="h-full w-full" class:active={$activePane === pane}>
+<aside
+  class="h-full w-full"
+  class:active={$activePane === pane}
+  use:handleGlobalKeys
+>
   <div class="p-1 bg-gray-600 text-white text-sm">
     {currentDir}
   </div>

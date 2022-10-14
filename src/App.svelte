@@ -61,16 +61,6 @@
           : activePane.set(Panes.Left)
         break
 
-      case "ArrowUp":
-        event.preventDefault()
-        console.log("ArrowUp")
-        break
-
-      case "ArrowDown":
-        event.preventDefault()
-        console.log("ArrowDown")
-        break
-
       default:
         break
     }
