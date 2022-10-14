@@ -46,9 +46,6 @@ Made with:
 - <label><input type="checkbox" /> Sort files by clicking the column header.</label>
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
-- <label><input type="checkbox" /> 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.</label>
-- <label><input type="checkbox" /> 🐛 Navigating to a folder should clear any file selections in that pane.</label>
-- <label><input type="checkbox" /> 🐛 F-keys in the command bar are not clickable.</label>
 
 **Nice to have**
 
@@ -71,6 +68,17 @@ Made with:
 - <label><input type="checkbox" /> When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.</label>
 - <label><input type="checkbox" /> Bookmarks - mark files & folders as favorite and find them in a list.</label>
 - <label><input type="checkbox" /> Apply dark theme to scrollbars as well.</label>
+
+**Issues**
+
+- <label><input type="checkbox" /> 🐛 Production builds are failing across platforms.</label>
+- <label><input type="checkbox" /> 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.</label>
+- <label><input type="checkbox" /> 🐛 Navigating to a folder should clear any file selections in that pane.</label>
+- <label><input type="checkbox" /> 🐛 F-keys in the command bar are not clickable.</label>
+- <label><input type="checkbox" /> Windows:</label>
+    - <label><input type="checkbox" /> 🐛 It starts in an empty nameless folder with only the parent ".." folder. Navigating to it goes to "C:\Users\<my-user>". From there I can't navigate to the parent folder due to permissions, but I can navigate to folders within.</label>
+    - <label><input type="checkbox" /> 🐛 The breadcrumbs are wrong; the URL splitting is done naively for Mac only.</label>
+    - <label><input type="checkbox" /> 🐛 The file open action doesn't work.</label>
 
 ## Download
 
