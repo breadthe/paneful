@@ -282,6 +282,14 @@
     position: sticky;
     top: theme("spacing.0");
     padding: 0 theme("spacing.1");
+
+    /* Disable selection of the underlying content when double-clicking the th */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   :global(html.dark th) {
