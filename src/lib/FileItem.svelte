@@ -168,8 +168,8 @@
   </td>
   <td class="">
     <div class="w-full overflow-hidden">
-      {#if typeof file !== "undefined" && file?.modified?.secs_since_epoch}
-        {new Date(file.modified.secs_since_epoch * 1000).toLocaleString()}
+      {#if typeof file !== "undefined" && file?.modified}
+        {new Date(file.modified * 1000).toLocaleString()}
       {/if}
     </div>
   </td>

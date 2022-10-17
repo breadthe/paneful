@@ -73,6 +73,10 @@
       // sort by size
       if ($thisPaneSort === "sizeAsc") return a.size - b.size
       if ($thisPaneSort === "sizeDesc") return b.size - a.size
+
+      // sort by modified date
+      if ($thisPaneSort === "modifiedAsc") return a.modified - b.modified
+      if ($thisPaneSort === "modifiedDesc") return b.modified - a.modified
     }
   })
 
@@ -118,6 +122,24 @@
 
         if (!$thisPaneSort.startsWith("size") || $thisPaneSort === "sizeDesc") {
           thisPaneSort.set("sizeAsc")
+          break
+        }
+        break
+
+      case "modified":
+        if (
+          !$thisPaneSort.startsWith("modified") ||
+          $thisPaneSort === "modifiedAsc"
+        ) {
+          thisPaneSort.set("modifiedDesc")
+          break
+        }
+
+        if (
+          !$thisPaneSort.startsWith("modified") ||
+          $thisPaneSort === "modifiedDesc"
+        ) {
+          thisPaneSort.set("modifiedAsc")
           break
         }
         break
@@ -242,7 +264,22 @@
               {/if}
             </div>
           </th>
-          <th class="text-left">modified</th>
+          <th
+            class="text-left cursor-pointer"
+            on:click={() => sortFilesBy("modified")}
+          >
+            <div class="flex items-center justify-between gap-2">
+              <span class="w-full text-right">modified</span>
+
+              {#if $thisPaneSort === "modifiedAsc"}
+                <DownSmallIcon />
+              {/if}
+
+              {#if $thisPaneSort === "modifiedDesc"}
+                <UpSmallIcon />
+              {/if}
+            </div></th
+          >
         </tr>
       </thead>
 

@@ -43,10 +43,10 @@ Made with:
     - <label><input type="checkbox" /> F6 - move a file/folder or selection to the other pane.</label>
     - <label><input type="checkbox" /> F7 - create new folder in the active pane.</label>
     - <label><input type="checkbox" /> F8 - delete a file/folder or selection.</label>
-- <label><input type="checkbox" /> Sort files by clicking the column header:</label>
+- <label><input type="checkbox" checked /> Sort files by clicking the column header:</label>
     - <label><input type="checkbox" checked /> Name</label>
     - <label><input type="checkbox" checked /> Size</label>
-    - <label><input type="checkbox" /> Modified date</label>
+    - <label><input type="checkbox" checked /> Modified date</label>
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
 - <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
 
@@ -74,7 +74,8 @@ Made with:
 
 **Issues**
 
-- <label><input type="checkbox" /> 🐛 Production builds are failing across platforms.</label>
+- <label><input type="checkbox" /> 🐛 Production builds are failing across all platforms.</label>
+- <label><input type="checkbox" /> 🐛 Navigating higher than "/" should be disallowed.</label>
 - <label><input type="checkbox" /> 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.</label>
 - <label><input type="checkbox" /> 🐛 Navigating to a folder should clear any file selections in that pane.</label>
 - <label><input type="checkbox" /> 🐛 Sorting a column header in a tab should make that tab active.</label>
