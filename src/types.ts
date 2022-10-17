@@ -7,6 +7,7 @@ export enum AlertTypes {
 }
 
 // mirrors Rust's SystemTime
+// @deprecated
 export interface SystemTime {
     secs_since_epoch: number;
     nanos_since_epoch: number;
@@ -23,7 +24,7 @@ export interface FileEntry {
     is_symlink: boolean;
     size?: number;
     size_pretty?: string;
-    modified?: SystemTime;
+    modified?: number; // seconds since epoch
 }
 
 export interface DirectoryListing {

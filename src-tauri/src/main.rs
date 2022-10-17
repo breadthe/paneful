@@ -103,6 +103,8 @@ async fn get_files_in_dir(dir_path: String) -> String {
 
         // get the modified date
         let modified: SystemTime = metadata.modified().unwrap();
+        // get the epoch seconds
+        let secs_since_epoch: u64 = modified.duration_since(SystemTime::UNIX_EPOCH).unwrap().as_secs();
 
         // get the created date
         let _created: SystemTime = metadata.created().unwrap();
@@ -120,7 +122,7 @@ async fn get_files_in_dir(dir_path: String) -> String {
                 is_symlink: metadata.is_symlink(),
                 size,
                 size_pretty: human_bytes(size as f64),
-                modified,
+                modified: secs_since_epoch,
             }
         );
     }

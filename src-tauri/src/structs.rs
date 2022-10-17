@@ -12,7 +12,7 @@ pub struct FileEntry {
     pub is_symlink: bool,
     pub size: u64,
     pub size_pretty: String,
-    pub modified: SystemTime,
+    pub modified: u64, // epoch seconds
 }
 
 impl Serialize for FileEntry {
