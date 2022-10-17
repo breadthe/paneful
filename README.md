@@ -30,6 +30,8 @@ Made with:
 - <label><input type="checkbox" checked /> Select a file/folder with SPACE.</label>
 - <label><input type="checkbox" /> Quick filter by file name.</label>
 
+[](#beyond-mvp)
+
 **Beyond MVP**
 
 - <label><input type="checkbox" checked /> Current folder path is breadcrumbed and navigable.</label>
@@ -72,6 +74,8 @@ Made with:
 - <label><input type="checkbox" /> Bookmarks - mark files & folders as favorite and find them in a list.</label>
 - <label><input type="checkbox" /> Apply dark theme to scrollbars as well.</label>
 
+[](#issues)
+
 **Issues**
 
 - <label><input type="checkbox" /> 🐛 Production builds are failing across all platforms.</label>
@@ -87,7 +91,9 @@ Made with:
 
 ## Download
 
-WIP
+Download the binary for your platform under [Releases](https://github.com/breadthe/Paneful/releases).
+
+**Note** Binaries don't work as of v0.3.0.
 
 ## Building the app
 
@@ -102,6 +108,15 @@ cargo tauri dev
 # build the production app
 cargo tauri build
 ```
+
+## Contributing
+
+This project is purely experimental and I can't guarantee it will hold my interest long term, but if you wish to contribute please focus on these areas:
+
+* [Issues](#issues) are the highest priority.
+* [Beyond MVP](beyond-mvp) features are next.
+
+I am not interested in ideas beyond what's listed under [Features]([](#feature-list)).
 
 ## License
 
