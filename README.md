@@ -2,6 +2,8 @@
 
 Cross platform desktop dual-pane file browser. It is an open source alternative to popular dual-pane browsers such as [Total Commander](https://www.ghisler.com/) for Windows or [Commander One](https://apps.apple.com/us/app/commander-one-file-manager/id1035236694?mt=12) for Mac.
 
+![paneful-screenshot](https://user-images.githubusercontent.com/17433578/196564460-6cf74caa-120e-458f-bb26-8230eaa03cba.jpg)
+
 ## Stack
 
 Made with:
