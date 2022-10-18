@@ -79,9 +79,9 @@
   "resolved" "https://registry.npmjs.org/@tauri-apps/api/-/api-1.1.0.tgz"
   "version" "1.1.0"
 
-"@tauri-apps/cli-darwin-x64@1.1.1":
-  "integrity" "sha512-M3dMsp78OdxisbTwAWGvy3jIb3uqThtQcUYVvqOu9LeEOHyldOBFDSht+6PTBpaJLAHFMQK2rmNxiWgigklJaA=="
-  "resolved" "https://registry.npmjs.org/@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-1.1.1.tgz"
+"@tauri-apps/cli-darwin-arm64@1.1.1":
+  "integrity" "sha512-qBG11ig525/qf0f5OQxn0ON3hT8YdpTfpa4Y4kVqBJhdW50R5fadPv6tv5Dpl2TS2X7nWh/zg5mEXYoCK3HZ9w=="
+  "resolved" "https://registry.npmjs.org/@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-1.1.1.tgz"
   "version" "1.1.1"
 
 "@tauri-apps/cli@^1.1.1":
@@ -484,9 +484,9 @@
   "resolved" "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz"
   "version" "3.3.1"
 
-"esbuild-darwin-64@0.15.10":
-  "integrity" "sha512-hbDJugTicqIm+WKZgp208d7FcXcaK8j2c0l+fqSJ3d2AzQAfjEYDRM3Z2oMeqSJ9uFxyj/muSACLdix7oTstRA=="
-  "resolved" "https://registry.npmjs.org/esbuild-darwin-64/-/esbuild-darwin-64-0.15.10.tgz"
+"esbuild-darwin-arm64@0.15.10":
+  "integrity" "sha512-M1t5+Kj4IgSbYmunf2BB6EKLkWUq+XlqaFRiGOk8bmBapu9bCDrxjf4kUnWn59Dka3I27EiuHBKd1rSO4osLFQ=="
+  "resolved" "https://registry.npmjs.org/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.15.10.tgz"
   "version" "0.15.10"
 
 "esbuild@^0.15.9":
