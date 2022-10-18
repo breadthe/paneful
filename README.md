@@ -1,4 +1,8 @@
-# ![Square30x30Logo](https://user-images.githubusercontent.com/17433578/195490908-9e22909f-0b57-4c11-bc4a-766d69f43fd9.png) Paneful
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/17433578/196566322-35f86328-8a6e-4faa-b853-df41bf1f366e.png" width="150" height="150" alt="Paneful logo" />
+</p>
+
+# Paneful
 
 Cross platform desktop dual-pane file browser. It is an open source alternative to popular dual-pane browsers such as [Total Commander](https://www.ghisler.com/) for Windows or [Commander One](https://apps.apple.com/us/app/commander-one-file-manager/id1035236694?mt=12) for Mac.
 
