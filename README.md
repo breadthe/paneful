@@ -24,76 +24,76 @@ Made with:
 
 **MVP**
 
-- <label><input type="checkbox" checked /> Dual-pane, resizeable layout.</label>
-- <label><input type="checkbox" checked /> Show file name, extension, size, modified date, kind (file, folder, etc).</label>
-- <label><input type="checkbox" checked /> Start by default in the Home directory.</label>
-- <label><input type="checkbox" checked /> Remember the directory location in each pane when quitting the app.</label>
-- <label><input type="checkbox" checked /> Switch between panes with TAB.</label>
-- <label><input type="checkbox" checked /> Show directories first.</label>
-- <label><input type="checkbox" checked /> Top entry navigates to parent folder.</label>
-- <label><input type="checkbox" checked /> Highlight a file/folder by navigating with up/down keys or clicking it.</label>
-- <label><input type="checkbox" checked /> Open a file in its associated app with double click or ENTER.</label>
-- <label><input type="checkbox" checked /> Select a file/folder with SPACE.</label>
-- <label><input type="checkbox" /> Quick filter by file name.</label>
+- [x] Dual-pane, resizeable layout.
+- [x] Show file name, extension, size, modified date, kind (file, folder, etc).
+- [x] Start by default in the Home directory.
+- [x] Remember the directory location in each pane when quitting the app.
+- [x] Switch between panes with TAB.
+- [x] Show directories first.
+- [x] Top entry navigates to parent folder.
+- [x] Highlight a file/folder by navigating with up/down keys or clicking it.
+- [x] Open a file in its associated app with double click or ENTER.
+- [x] Select a file/folder with SPACE.
+- [] Quick filter by file name.
 
 [](#beyond-mvp)
 
 **Beyond MVP**
 
-- <label><input type="checkbox" checked /> Current folder path is breadcrumbed and navigable.</label>
-- <label><input type="checkbox" checked /> Dark/light mode with persistence.</label>
-- <label><input type="checkbox" /> Navigate to top/bottom of list with Fn+arrow.</label>
-- <label><input type="checkbox" /> Arrow navigation should scroll the pane.</label>
-- <label><input type="checkbox" /> Simple controls for:</label>
-    - <label><input type="checkbox" checked /> F3 - view file (opens in associated app), also works with double click or ENTER.</label>
-    - <label><input type="checkbox" /> F4 - edit file (opens in text editor).</label>
-    - <label><input type="checkbox" /> F5 - copy a file/folder or selection to the other pane.</label>
-    - <label><input type="checkbox" /> F6 - move a file/folder or selection to the other pane.</label>
-    - <label><input type="checkbox" /> F7 - create new folder in the active pane.</label>
-    - <label><input type="checkbox" /> F8 - delete a file/folder or selection.</label>
-- <label><input type="checkbox" checked /> Sort files by clicking the column header:</label>
-    - <label><input type="checkbox" checked /> Name</label>
-    - <label><input type="checkbox" checked /> Size</label>
-    - <label><input type="checkbox" checked /> Modified date</label>
-- <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
-- <label><input type="checkbox" /> When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.</label>
+- [x] Current folder path is breadcrumbed and navigable.
+- [x] Dark/light mode with persistence.
+- [] Navigate to top/bottom of list with Fn+arrow.
+- [] Arrow navigation should scroll the pane.
+- [] Simple controls for:
+    - [x] F3 - view file (opens in associated app), also works with double click or ENTER.
+    - [] F4 - edit file (opens in text editor).
+    - [] F5 - copy a file/folder or selection to the other pane.
+    - [] F6 - move a file/folder or selection to the other pane.
+    - [] F7 - create new folder in the active pane.
+    - [] F8 - delete a file/folder or selection.
+- [x] Sort files by clicking the column header:
+    - [x] Name
+    - [x] Size
+    - [x] Modified date
+- [] When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.
+- [] When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.
 
 **Nice to have**
 
-- <label><input type="checkbox" /> Disk drive selection for computers with multiple drives.</label>
-- <label><input type="checkbox" /> Progress indicators for various operations (copy, move, etc).</label>
-- <label><input type="checkbox" /> File type icons.</label>
-- <label><input type="checkbox" /> Pane tabs.</label>
-    - <label><input type="checkbox" /> New tab with CMD/CTRL+T.</label>
-    - <label><input type="checkbox" /> Close tab with CMD/CTRL+W.</label>
-- <label><input type="checkbox" /> Forward/back navigation thru directory history.</label>
-- <label><input type="checkbox" /> Right click a file/folder for a context menu:</label>
-    - <label><input type="checkbox" /> Info, etc.</label>
-- <label><input type="checkbox" /> Remember sorting, filtering, etc for each pane when quitting.</label>
-- <label><input type="checkbox" /> Remember pane split.</label>
-- <label><input type="checkbox" /> Remember app window size & position.</label>
-- <label><input type="checkbox" checked /> Summary of file counts & sizes below each pane.</label>
-- <label><input type="checkbox" checked /> Selecting files shows a summary below each pane.</label>
-- <label><input type="checkbox" /> Add granular data for the above 2: total sizes and distinguish between files & folders.</label>
-- <label><input type="checkbox" /> Follow a symlink.</label>
-- <label><input type="checkbox" /> When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.</label>
-- <label><input type="checkbox" /> Bookmarks - mark files & folders as favorite and find them in a list.</label>
-- <label><input type="checkbox" /> Apply dark theme to scrollbars as well.</label>
+- [] Disk drive selection for computers with multiple drives.
+- [] Progress indicators for various operations (copy, move, etc).
+- [] File type icons.
+- [] Pane tabs.
+    - [] New tab with CMD/CTRL+T.
+    - [] Close tab with CMD/CTRL+W.
+- [] Forward/back navigation thru directory history.
+- [] Right click a file/folder for a context menu:
+    - [] Info, etc.
+- [] Remember sorting, filtering, etc for each pane when quitting.
+- [] Remember pane split.
+- [] Remember app window size & position.
+- [x] Summary of file counts & sizes below each pane.
+- [x] Selecting files shows a summary below each pane.
+- [] Add granular data for the above 2: total sizes and distinguish between files & folders.
+- [] Follow a symlink.
+- [] When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.
+- [] Bookmarks - mark files & folders as favorite and find them in a list.
+- [] Apply dark theme to scrollbars as well.
 
 [](#issues)
 
 **Issues**
 
-- <label><input type="checkbox" /> 🐛 Production builds are failing across all platforms.</label>
-- <label><input type="checkbox" /> 🐛 Navigating higher than "/" should be disallowed.</label>
-- <label><input type="checkbox" /> 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.</label>
-- <label><input type="checkbox" /> 🐛 Navigating to a folder should clear any file selections in that pane.</label>
-- <label><input type="checkbox" /> 🐛 Sorting a column header in a tab should make that tab active.</label>
-- <label><input type="checkbox" /> 🐛 F-keys in the command bar are not clickable.</label>
-- <label><input type="checkbox" /> Windows:</label>
-    - <label><input type="checkbox" /> 🐛 It starts in an empty nameless folder with only the parent ".." folder. Navigating to it goes to "C:\Users\<my-user>". From there I can't navigate to the parent folder due to permissions, but I can navigate to folders within.</label>
-    - <label><input type="checkbox" /> 🐛 The breadcrumbs are wrong; the URL splitting is done naively for Mac only.</label>
-    - <label><input type="checkbox" /> 🐛 The file open action doesn't work.</label>
+- [] 🐛 Production builds are failing across all platforms.
+- [] 🐛 Navigating higher than "/" should be disallowed.
+- [] 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.
+- [] 🐛 Navigating to a folder should clear any file selections in that pane.
+- [] 🐛 Sorting a column header in a tab should make that tab active.
+- [] 🐛 F-keys in the command bar are not clickable.
+- [] Windows:
+    - [] 🐛 It starts in an empty nameless folder with only the parent ".." folder. Navigating to it goes to "C:\Users\<my-user>". From there I can't navigate to the parent folder due to permissions, but I can navigate to folders within.
+    - [] 🐛 The breadcrumbs are wrong; the URL splitting is done naively for Mac only.
+    - [] 🐛 The file open action doesn't work.
 
 ## Download
 
