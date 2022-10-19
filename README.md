@@ -34,7 +34,7 @@ Made with:
 - [x] Highlight a file/folder by navigating with up/down keys or clicking it.
 - [x] Open a file in its associated app with double click or ENTER.
 - [x] Select a file/folder with SPACE.
-- [] Quick filter by file name.
+- [ ] Quick filter by file name.
 
 [](#beyond-mvp)
 
@@ -42,58 +42,58 @@ Made with:
 
 - [x] Current folder path is breadcrumbed and navigable.
 - [x] Dark/light mode with persistence.
-- [] Navigate to top/bottom of list with Fn+arrow.
-- [] Arrow navigation should scroll the pane.
-- [] Simple controls for:
+- [ ] Navigate to top/bottom of list with Fn+arrow.
+- [ ] Arrow navigation should scroll the pane.
+- [ ] Simple controls for:
     - [x] F3 - view file (opens in associated app), also works with double click or ENTER.
-    - [] F4 - edit file (opens in text editor).
-    - [] F5 - copy a file/folder or selection to the other pane.
-    - [] F6 - move a file/folder or selection to the other pane.
-    - [] F7 - create new folder in the active pane.
-    - [] F8 - delete a file/folder or selection.
+    - [ ] F4 - edit file (opens in text editor).
+    - [ ] F5 - copy a file/folder or selection to the other pane.
+    - [ ] F6 - move a file/folder or selection to the other pane.
+    - [ ] F7 - create new folder in the active pane.
+    - [ ] F8 - delete a file/folder or selection.
 - [x] Sort files by clicking the column header:
     - [x] Name
     - [x] Size
     - [x] Modified date
-- [] When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.
-- [] When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.
+- [ ] When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.
+- [ ] When a directory opened in a pane is deleted while the app is closed, reset the location to the parent directory if it exists (keep going up the hierarchy), else the Home directory.
 
 **Nice to have**
 
-- [] Disk drive selection for computers with multiple drives.
-- [] Progress indicators for various operations (copy, move, etc).
-- [] File type icons.
-- [] Pane tabs.
-    - [] New tab with CMD/CTRL+T.
-    - [] Close tab with CMD/CTRL+W.
-- [] Forward/back navigation thru directory history.
-- [] Right click a file/folder for a context menu:
-    - [] Info, etc.
-- [] Remember sorting, filtering, etc for each pane when quitting.
-- [] Remember pane split.
-- [] Remember app window size & position.
+- [ ] Disk drive selection for computers with multiple drives.
+- [ ] Progress indicators for various operations (copy, move, etc).
+- [ ] File type icons.
+- [ ] Pane tabs.
+    - [ ] New tab with CMD/CTRL+T.
+    - [ ] Close tab with CMD/CTRL+W.
+- [ ] Forward/back navigation thru directory history.
+- [ ] Right click a file/folder for a context menu:
+    - [ ] Info, etc.
+- [ ] Remember sorting, filtering, etc for each pane when quitting.
+- [ ] Remember pane split.
+- [ ] Remember app window size & position.
 - [x] Summary of file counts & sizes below each pane.
 - [x] Selecting files shows a summary below each pane.
-- [] Add granular data for the above 2: total sizes and distinguish between files & folders.
-- [] Follow a symlink.
-- [] When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.
-- [] Bookmarks - mark files & folders as favorite and find them in a list.
-- [] Apply dark theme to scrollbars as well.
+- [ ] Add granular data for the above 2: total sizes and distinguish between files & folders.
+- [ ] Follow a symlink.
+- [ ] When navigating up a folder (back), set the highlighted file to the directory that was navigated from instead of defaulting to "..". Likely requires navigation history.
+- [ ] Bookmarks - mark files & folders as favorite and find them in a list.
+- [ ] Apply dark theme to scrollbars as well.
 
 [](#issues)
 
 **Issues**
 
-- [] 🐛 Production builds are failing across all platforms.
-- [] 🐛 Navigating higher than "/" should be disallowed.
-- [] 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.
-- [] 🐛 Navigating to a folder should clear any file selections in that pane.
-- [] 🐛 Sorting a column header in a tab should make that tab active.
-- [] 🐛 F-keys in the command bar are not clickable.
-- [] Windows:
-    - [] 🐛 It starts in an empty nameless folder with only the parent ".." folder. Navigating to it goes to "C:\Users\<my-user>". From there I can't navigate to the parent folder due to permissions, but I can navigate to folders within.
-    - [] 🐛 The breadcrumbs are wrong; the URL splitting is done naively for Mac only.
-    - [] 🐛 The file open action doesn't work.
+- [ ] 🐛 Production builds are failing across all platforms.
+- [ ] 🐛 Navigating higher than "/" should be disallowed.
+- [ ] 🐛 Focusing the app from a cold start allows tabbing only after clicking inside the pane once.
+- [ ] 🐛 Navigating to a folder should clear any file selections in that pane.
+- [ ] 🐛 Sorting a column header in a tab should make that tab active.
+- [ ] 🐛 F-keys in the command bar are not clickable.
+- [ ] Windows:
+    - [ ] 🐛 It starts in an empty nameless folder with only the parent ".." folder. Navigating to it goes to "C:\Users\<my-user>". From there I can't navigate to the parent folder due to permissions, but I can navigate to folders within.
+    - [ ] 🐛 The breadcrumbs are wrong; the URL splitting is done naively for Mac only.
+    - [ ] 🐛 The file open action doesn't work.
 
 ## Download
 
